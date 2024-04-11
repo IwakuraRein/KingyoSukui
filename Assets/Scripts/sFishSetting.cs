@@ -8,9 +8,11 @@ namespace Kingyo
     public struct FishSetting
     {
         public int MaxFishCount;
+        public float WaterDepth;
+        public Vector3 Offset;
         [SerializeField]
         private GameObject tank; // tank object
-        public GameObject Tank { get => tank; }
-        public Bounds bounds { get => tank.GetComponent<MeshRenderer>().bounds; }
+        public Bounds Bounds { get => tank.GetComponent<MeshRenderer>().bounds; }
+        public Vector3 Center { get => Bounds.center; }
     }
 }

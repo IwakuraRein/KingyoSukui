@@ -946,6 +946,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6498266060945107657}
   - component: {fileID: 679878295431830133}
+  - component: {fileID: 6875725268578748756}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -1075,6 +1076,29 @@ SkinnedMeshRenderer:
     m_Center: {x: 2.910383e-11, y: -0.00016840361, z: 0.000005648908}
     m_Extent: {x: 0.00017970637, y: 0.00039552158, z: 0.0003629678}
   m_DirtyAABB: 0
+--- !u!136 &6875725268578748756
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522436711356347182}
+  m_Material: {fileID: 13400000, guid: 10bde48ef542d6a4fbee12145283824a, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0004904001
+  m_Height: 0.0009808003
+  m_Direction: 1
+  m_Center: {x: 0.0000016927436, y: 0.00023611072, z: -0.000053487376}
 --- !u!1 &1742915145472434066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,6 +1631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5903135521378266447}
   - component: {fileID: 21341390229446202}
+  - component: {fileID: 4255874873743939}
   m_Layer: 0
   m_Name: finTail
   m_TagString: Untagged
@@ -1736,6 +1761,29 @@ SkinnedMeshRenderer:
     m_Center: {x: -2.910383e-11, y: -0.0007043034, z: 0.000048016343}
     m_Extent: {x: 0.0003272046, y: 0.0003748726, z: 0.0004682182}
   m_DirtyAABB: 0
+--- !u!136 &4255874873743939
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3406259496877582570}
+  m_Material: {fileID: 13400000, guid: 10bde48ef542d6a4fbee12145283824a, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0004862266
+  m_Height: 0.0009724533
+  m_Direction: 1
+  m_Center: {x: -4.2069192e-11, y: 0.00066540204, z: -0.000074557596}
 --- !u!1 &3444317256458234728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,6 +1989,7 @@ GameObject:
   - component: {fileID: 3408765554882758246}
   - component: {fileID: 8596016365238401356}
   - component: {fileID: 8113495569508301240}
+  - component: {fileID: 5440265207942987695}
   m_Layer: 0
   m_Name: BroadtailMoorSF
   m_TagString: Untagged
@@ -2002,6 +2051,33 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!54 &5440265207942987695
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566545722189806337}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4681174271942837702
 GameObject:
   m_ObjectHideFlags: 0

@@ -3862,12 +3862,9 @@ MonoBehaviour:
   - {fileID: 8794845505853409006, guid: 62fea831f4998c9458cb7d466e085eb5, type: 3}
   - {fileID: 6687064165282074955, guid: d0c48fb7bfcbe364b93cfb1b404492f6, type: 3}
   - {fileID: 4566545722189806337, guid: 0562610692ce37f4194a26ab891e50e5, type: 3}
-  tank: {fileID: 1547701614}
   fishSetting:
     MaxFishCount: 20
-    bounds:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: -4.4, y: 3.07, z: 4.59}
+    tank: {fileID: 1547701614}
 --- !u!4 &915993938
 Transform:
   m_ObjectHideFlags: 0
@@ -4115,11 +4112,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbb5eb902feaf3242a054d71c505e925, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbb5eb902feaf3242a054d71c505e925, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbb5eb902feaf3242a054d71c505e925, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4127,7 +4124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbb5eb902feaf3242a054d71c505e925, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2
+      value: 3.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbb5eb902feaf3242a054d71c505e925, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4163,7 +4160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bbb5eb902feaf3242a054d71c505e925, type: 3}
       propertyPath: m_Name
-      value: coloredtank
+      value: tank
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
