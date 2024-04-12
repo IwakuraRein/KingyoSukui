@@ -9,6 +9,7 @@ namespace Kingyo
         [ReadOnly]
         public NativeArray<Vector3> positions;
         public NativeArray<Vector3> velocities;
+        public NativeArray<bool> isFishInBowl;
         [ReadOnly]
         public float avoidanceRadius;
         public float boundaryAvoidanceWeight;
@@ -21,6 +22,10 @@ namespace Kingyo
 
         public void Execute(int index, TransformAccess transform)
         {
+            if (isFishInBowl[index])
+            {
+                return;
+            }
             Vector3 boundaryAvoidance = Vector3.zero;
 
             if (!MyUtility.IsUnderWater(transform.position, center, extents, waterDepth, perimeterThreshold))

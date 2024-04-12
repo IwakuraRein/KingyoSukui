@@ -30,11 +30,10 @@ namespace Kingyo
         }
         [SerializeField]
         GameObject[] fishPrefabs; // prefab of fish
-        [SerializeField]
-        private int numFishInBowl = 0; 
         Fish[] fishes;
         private NativeArray<Vector3> FishPositions;
         private NativeArray<Vector3> FishVelocities;
+        private NativeArray<bool> IsFishInBowl;
         private NativeArray<bool> useGravityFlags;
         private TransformAccessArray transformAccessArray;
         [SerializeField]
@@ -50,7 +49,7 @@ namespace Kingyo
             transformAccessArray = new TransformAccessArray(fishes.Length);
             FishPositions = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
             FishVelocities = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
-
+            IsFishInBowl = new NativeArray<bool>(fishes.Length, Allocator.Persistent);
             for (int i = 0; i < fishes.Length; i++)
             {
                 transformAccessArray.Add(fishes[i].transform);
@@ -63,6 +62,7 @@ namespace Kingyo
             FishPositions.Dispose();
             FishVelocities.Dispose();
             useGravityFlags.Dispose();
+            IsFishInBowl.Dispose();
         }
         void Update()
         {
@@ -114,6 +114,7 @@ namespace Kingyo
             {
                 positions = FishPositions,
                 velocities = FishVelocities,
+                isFishInBowl = IsFishInBowl,
                 avoidanceRadius = fishSetting.avoidanceRadius,
                 boundaryAvoidanceWeight = fishSetting.boundaryAvoidanceWeight,
                 fishAvoidanceWeight = fishSetting.fishAvoidanceWeight,
@@ -128,32 +129,44 @@ namespace Kingyo
         }
         void UpdateFishRigidBody()
         {
-            numFishInBowl = 0;
             for (int i = 0; i < fishes.Length; i++)
             {
-                if (fishes[i].IsInBowl)
-                {
-                    numFishInBowl++;
-                    continue;
-                }
-                Vector3 vel = FishVelocities[i];
                 var fishRigidbody = fishes[i].GetComponent<Rigidbody>();
-                fishRigidbody.MoveRotation(fishes[i].transform.rotation);
-                if (vel.magnitude > fishes[i].maxSpeed)
-                {
-                    vel = vel.normalized * fishes[i].maxSpeed;
-                }
-                vel.y *= 0.8f;
-                if (vel.magnitude > 1e-2f)
-                {
-                    fishRigidbody.velocity = vel;
-                }
-                else
-                {
-                    Vector3 direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-                    fishRigidbody.velocity = direction * Random.Range(0, fishes[i].maxSpeed);
-                }
                 fishRigidbody.useGravity = useGravityFlags[i];
+                if (fishes[i].IsInBowl || fishRigidbody.useGravity)
+                {
+                    if (fishes[i].IsInBowl)
+                    {
+                        IsFishInBowl[i] = true;
+                        fishRigidbody.useGravity = false;
+                        fishRigidbody.velocity.Set(fishRigidbody.velocity.x, 0, fishRigidbody.velocity.z);
+                        fishRigidbody.angularVelocity = Vector3.zero;
+                    }
+                    else
+                    {
+                        fishRigidbody.velocity *= 0.1f;
+                        fishRigidbody.angularVelocity = Vector3.zero;
+                    }
+                }
+                else // fish is in water
+                {
+                    Vector3 vel = FishVelocities[i];
+                    fishRigidbody.MoveRotation(fishes[i].transform.rotation);
+                    if (vel.magnitude > fishes[i].maxSpeed)
+                    {
+                        vel = vel.normalized * fishes[i].maxSpeed;
+                    }
+                    vel.y *= 0.8f;
+                    if (vel.magnitude > 1e-2f)
+                    {
+                        fishRigidbody.velocity = vel;
+                    }
+                    else
+                    {
+                        Vector3 direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+                        fishRigidbody.velocity = direction * Random.Range(0, fishes[i].maxSpeed);
+                    }
+                }
             }
         }
     }

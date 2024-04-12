@@ -16,7 +16,7 @@ namespace Kingyo
 
         public void Execute(int index)
         {
-            useGravityFlags[index] = !MyUtility.IsUnderWater(positions[index], center, extents, waterDepth);
+            useGravityFlags[index] = !MyUtility.IsUnderWater(positions[index], center, extents, waterDepth, new Vector3(0, 0, 0));
         }
     }
 }
