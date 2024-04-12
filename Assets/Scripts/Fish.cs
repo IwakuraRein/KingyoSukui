@@ -7,8 +7,10 @@ namespace Kingyo
     public class Fish : MonoBehaviour
     {
         public float maxSpeed;
-        private bool isCaught = false;
-        public bool IsCaught { get => isCaught; }
+        private bool isInPoi = false;
+        public bool IsInPoi { get => isInPoi; }
+        private bool isInBowl = false;
+        public bool IsInBowl { get => isInBowl; }
         // Start is called before the first frame update
         void Start()
         {
@@ -28,14 +30,22 @@ namespace Kingyo
                 {
                     return;
                 }
-                isCaught = true;
+                isInPoi = true;
+            }
+            if (collision.gameObject.tag == "bowl")
+            {
+                isInBowl = true;
             }
         }
         void OnCollisionExit(Collision collision)
         {
             if (collision.gameObject.tag == "poi")
             {
-                isCaught = false;
+                isInPoi = false;
+            }
+            if (collision.gameObject.tag == "bowl")
+            {
+                isInBowl = false;
             }
         }
     }

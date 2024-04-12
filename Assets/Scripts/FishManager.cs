@@ -30,6 +30,8 @@ namespace Kingyo
         }
         [SerializeField]
         GameObject[] fishPrefabs; // prefab of fish
+        [SerializeField]
+        private int numFishInBowl = 0; 
         Fish[] fishes;
         private NativeArray<Vector3> FishPositions;
         private NativeArray<Vector3> FishVelocities;
@@ -126,8 +128,14 @@ namespace Kingyo
         }
         void UpdateFishRigidBody()
         {
+            numFishInBowl = 0;
             for (int i = 0; i < fishes.Length; i++)
             {
+                if (fishes[i].IsInBowl)
+                {
+                    numFishInBowl++;
+                    continue;
+                }
                 Vector3 vel = FishVelocities[i];
                 var fishRigidbody = fishes[i].GetComponent<Rigidbody>();
                 fishRigidbody.MoveRotation(fishes[i].transform.rotation);
