@@ -28,12 +28,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) > 0.5f)
+        //Debug.Log(OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger));
+        // if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) > 0.5f)
+        // {
+        //     poi.SetActive(true);
+        // } else
+        // {
+        //     poi.SetActive(false);
+        // }
+        if (OVRInput.GetDown(OVRInput.Button.Two))
         {
-            poi.SetActive(true);
-        } else
-        {
-            poi.SetActive(false);
+            if (poi.activeSelf)
+            {
+                poi.SetActive(false);
+            } else
+            {
+                poi.SetActive(true);
+            }
         }
     }
 }
