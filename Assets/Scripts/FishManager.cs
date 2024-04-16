@@ -36,6 +36,8 @@ namespace Kingyo
         private NativeArray<bool> IsFishInBowl;
         private NativeArray<bool> useGravityFlags;
         private TransformAccessArray transformAccessArray;
+        [SerializeField][Tooltip("Enable AI for fish. If false, fish will not move. AI is disabled for debugging.")]
+        private bool IsAIEnabled = true;
         [SerializeField]
         private FishSetting fishSetting;
         public FishSetting FishSetting { get => fishSetting; }
@@ -45,7 +47,7 @@ namespace Kingyo
             {
                 Debug.LogError("WaterDepth is too deep. Please set the value less than " + fishSetting.Bounds.extents.y * 2);
             }
-            CreateFish(fishSetting.Center, fishSetting.Bounds, fishSetting.Offset, fishSetting.MaxFishCount);
+            CreateFish(fishSetting.Center, fishSetting.Bounds, fishSetting.OffsetPercentage, fishSetting.MaxFishCount);
             transformAccessArray = new TransformAccessArray(fishes.Length);
             FishPositions = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
             FishVelocities = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
@@ -72,14 +74,22 @@ namespace Kingyo
                 FishVelocities[i] = fishes[i].GetComponent<Rigidbody>().velocity;
             }
             UpdateFishUseGravity(fishSetting.Center, fishSetting.Bounds);
-            UpdateFishBehavior(fishSetting.Center, fishSetting.Bounds);
-            UpdateFishRigidBody();
+            if (IsAIEnabled)
+            {
+                UpdateFishBehavior(fishSetting.Center, fishSetting.Bounds);
+                UpdateFishRigidBody();
+            }
+            else
+            {
+                UpdateFishRigidBodyWOAI();
+            }
         }
-        void CreateFish(Vector3 center, Bounds bounds, Vector3 offset, int count)
+        void CreateFish(Vector3 center, Bounds bounds, Vector3 offsetPercentage, int count)
         {
             fishes = new Fish[count];
             for (int i = 0; i < count; i++)
             {
+                Vector3 offset = new Vector3(bounds.extents.x * offsetPercentage.x, bounds.extents.y * offsetPercentage.y, bounds.extents.z * offsetPercentage.z);
                 Vector3 pos = center +
                 new Vector3(Random.Range(-bounds.extents.x + offset.x, bounds.extents.x - offset.x),
                     Random.Range(-bounds.extents.y + offset.y, -bounds.extents.y + fishSetting.WaterDepth - offset.y),
@@ -89,8 +99,11 @@ namespace Kingyo
                 // randomize fish velocity and direction
                 Vector3 direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
                 fish.transform.forward = direction;
-                Vector3 velocity = direction * Random.Range(0, fish.GetComponent<Fish>().maxSpeed);
-                fish.GetComponent<Rigidbody>().velocity = velocity;
+                if (IsAIEnabled)
+                {
+                    Vector3 velocity = direction * Random.Range(0, fish.GetComponent<Fish>().maxSpeed);
+                    fish.GetComponent<Rigidbody>().velocity = velocity;
+                }
                 fishes[i] = fish.GetComponent<Fish>();
             }
         }
@@ -116,11 +129,12 @@ namespace Kingyo
                 velocities = FishVelocities,
                 isFishInBowl = IsFishInBowl,
                 avoidanceRadius = fishSetting.avoidanceRadius,
+                maxAvoidance = fishSetting.maxAvoidance,
                 boundaryAvoidanceWeight = fishSetting.boundaryAvoidanceWeight,
                 fishAvoidanceWeight = fishSetting.fishAvoidanceWeight,
                 center = center,
                 extents = extents,
-                perimeterThreshold = fishSetting.PerimeterThreshold,
+                perimeterThresholdPercentage = fishSetting.PerimeterThresholdPercentage,
                 waterDepth = fishSetting.WaterDepth,
                 deltaTime = Time.deltaTime
             };
@@ -165,6 +179,32 @@ namespace Kingyo
                     {
                         Vector3 direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
                         fishRigidbody.velocity = direction * Random.Range(0, fishes[i].maxSpeed);
+                    }
+                }
+            }
+        }
+        void UpdateFishRigidBodyWOAI()
+        {
+            for (int i = 0; i < fishes.Length; i++)
+            {
+                var fishRigidbody = fishes[i].GetComponent<Rigidbody>();
+                fishRigidbody.useGravity = useGravityFlags[i];
+                fishRigidbody.velocity = new Vector3(0, 0, 0);
+                fishRigidbody.angularVelocity = new Vector3(0, 0, 0);
+                if (fishes[i].IsInBowl || fishRigidbody.useGravity)
+                {
+                    if (fishes[i].IsInBowl)
+                    {
+                        Debug.Log("Fish is in bowl");
+                        IsFishInBowl[i] = true;
+                        fishRigidbody.useGravity = false;
+                        fishRigidbody.velocity.Set(fishRigidbody.velocity.x, 0, fishRigidbody.velocity.z);
+                        fishRigidbody.angularVelocity = Vector3.zero;
+                    }
+                    else
+                    {
+                        fishRigidbody.velocity *= 0.1f;
+                        fishRigidbody.angularVelocity = Vector3.zero;
                     }
                 }
             }

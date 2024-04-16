@@ -12,14 +12,14 @@ namespace Kingyo
         public NativeArray<bool> isFishInBowl;
         [ReadOnly]
         public float avoidanceRadius;
+        public float maxAvoidance;
         public float boundaryAvoidanceWeight;
         public float fishAvoidanceWeight;
         public float waterDepth;
-        public Vector3 perimeterThreshold;
+        public Vector3 perimeterThresholdPercentage;
         public Vector3 center;
         public Bounds extents;
         public float deltaTime;
-
         public void Execute(int index, TransformAccess transform)
         {
             if (isFishInBowl[index])
@@ -28,9 +28,12 @@ namespace Kingyo
             }
             Vector3 boundaryAvoidance = Vector3.zero;
 
-            if (!MyUtility.IsUnderWater(transform.position, center, extents, waterDepth, perimeterThreshold))
+            Vector3 sdf = MyUtility.SDFUnderWater(transform.position, center, extents, waterDepth, perimeterThresholdPercentage);
+            if (sdf.magnitude > 0.1f)
             {
-                boundaryAvoidance = (center - transform.position).normalized;
+                boundaryAvoidance = new Vector3(Mathf.Min(1 / sdf.x, maxAvoidance),
+                Mathf.Min(1 / sdf.y, maxAvoidance),
+                Mathf.Min(1 / sdf.z, maxAvoidance));
             }
             // avoid other fish
             Vector3 FishAvoidance = Vector3.zero;
@@ -46,11 +49,11 @@ namespace Kingyo
                 {
                     Vector3 avoidVector = (transform.position - positions[i]);
                     // the closer the fish, the stronger the avoidance(inverse)
-                    FishAvoidance += new Vector3(1 / avoidVector.x, 1 / avoidVector.y, 1 / avoidVector.z);
+                    FishAvoidance += new Vector3(Mathf.Min(1 / distance, maxAvoidance) * avoidVector.x, 0, Mathf.Min(1 / distance, maxAvoidance) * avoidVector.z);
                     count++;
                 }
             }
-            Vector3 randomDirection = new Vector3(0,0,0);
+            Vector3 randomDirection = new Vector3(0, 0, 0);
             randomDirection.y = 0;
             if (count == 0)
             {

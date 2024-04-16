@@ -8,11 +8,14 @@ namespace Kingyo
     public struct FishSetting
     {
         public int MaxFishCount;
-        public Vector3 PerimeterThreshold;
+        public Vector3 PerimeterThresholdPercentage;
         public float WaterDepth;
-        public Vector3 Offset;
+        [Tooltip("The offset of the fish from the perimeter of the tank, to avoid the fish from spawning on the edge of the tank, used when the fish is created.")]
+        public Vector3 OffsetPercentage;
         public float avoidanceRadius;
         public float fishAvoidanceWeight;
+        [Tooltip("The maximum magnitude of the avoidance vector. The avoidance vector is the inverse of the distance between the fish and the obstacle. The closer the fish, the stronger the avoidance.")]
+        public float maxAvoidance;
         public float boundaryAvoidanceWeight;
 
         [SerializeField]
