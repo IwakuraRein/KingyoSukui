@@ -1091,7 +1091,7 @@ MonoBehaviour:
     OffsetPercentage: {x: 0.2, y: 0.3, z: 0.2}
     avoidanceRadius: 0.05
     fishAvoidanceWeight: 0.0001
-    maxAvoidance: 1
+    maxAvoidance: 0.1
     boundaryAvoidanceWeight: 0.01
     tank: {fileID: 914675913}
 --- !u!4 &456133167

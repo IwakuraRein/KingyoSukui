@@ -14,7 +14,8 @@ namespace Kingyo
             if (other.CompareTag("Fish"))
             {
                 fishesInBowl.Add(other.gameObject);
-                scoreTotal += other.gameObject.GetComponent<Fish>().score;
+                // get its parent fish component and add its score to the total
+                scoreTotal += other.gameObject.transform.parent.gameObject.GetComponent<Fish>().score;
             }
 
         }
@@ -24,7 +25,7 @@ namespace Kingyo
             if (other.CompareTag("Fish"))
             {
                 fishesInBowl.Remove(other.gameObject);
-                scoreTotal -= other.gameObject.GetComponent<Fish>().score;
+                scoreTotal -= other.gameObject.transform.parent.gameObject.GetComponent<Fish>().score;
             }
         }
 
