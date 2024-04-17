@@ -35,10 +35,6 @@ namespace Kingyo
         // Update is called once per frame
         void Update()
         {
-            if (bowl.GetComponent<Bowl>().GetFishCount() > 0)
-            {
-                Debug.Log("Fish count in bowl: " + bowl.GetComponent<Bowl>().GetFishCount());
-            }
             //Debug.Log(OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger));
             // if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) > 0.5f)
             // {

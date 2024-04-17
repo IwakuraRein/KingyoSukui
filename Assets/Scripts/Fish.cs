@@ -7,6 +7,7 @@ namespace Kingyo
     public class Fish : MonoBehaviour
     {
         public float maxSpeed;
+        public int score;
         private bool isInPoi = false;
         public bool IsInPoi { get => isInPoi; }
         private bool isInBowl = false;
