@@ -9,7 +9,9 @@ namespace Kingyo
         [ReadOnly]
         public NativeArray<Vector3> positions;
         public NativeArray<Vector3> velocities;
+        public NativeArray<Vector3> forces;
         public NativeArray<bool> isFishInBowl;
+        public NativeArray<bool> useGravityFlags;
         [ReadOnly]
         public float avoidanceRadius;
         public float maxAvoidance;
@@ -53,19 +55,13 @@ namespace Kingyo
                     count++;
                 }
             }
-            Vector3 randomDirection = new Vector3(0, 0, 0);
-            randomDirection.y = 0;
             if (count == 0)
             {
-                velocities[index] += deltaTime * (boundaryAvoidance * boundaryAvoidanceWeight + randomDirection * 0.1f);
+                forces[index] = deltaTime * (boundaryAvoidance * boundaryAvoidanceWeight);
             }
             else
             {
-                velocities[index] += deltaTime * (boundaryAvoidance * boundaryAvoidanceWeight + randomDirection * 0.1f + FishAvoidance * fishAvoidanceWeight / count);
-            }
-            if (velocities[index].magnitude > 1e-2f)
-            {
-                transform.rotation = Quaternion.LookRotation(velocities[index]);
+                forces[index] = deltaTime * (boundaryAvoidance * boundaryAvoidanceWeight + FishAvoidance * fishAvoidanceWeight / count);
             }
         }
     }

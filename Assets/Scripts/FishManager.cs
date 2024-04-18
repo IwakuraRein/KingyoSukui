@@ -32,11 +32,14 @@ namespace Kingyo
         GameObject[] fishPrefabs; // prefab of fish
         Fish[] fishes;
         private NativeArray<Vector3> FishPositions;
+        private NativeArray<Vector3> FishForces;
         private NativeArray<Vector3> FishVelocities;
         private NativeArray<bool> IsFishInBowl;
+        private NativeArray<bool> IsFishInPoi;
         private NativeArray<bool> useGravityFlags;
         private TransformAccessArray transformAccessArray;
-        [SerializeField][Tooltip("Enable AI for fish. If false, fish will not move. AI is disabled for debugging.")]
+        [SerializeField]
+        [Tooltip("Enable AI for fish. If false, fish will not move. AI is disabled for debugging.")]
         private bool IsAIEnabled = true;
         [SerializeField]
         private FishSetting fishSetting;
@@ -50,8 +53,10 @@ namespace Kingyo
             CreateFish(fishSetting.Center, fishSetting.Bounds, fishSetting.OffsetPercentage, fishSetting.MaxFishCount);
             transformAccessArray = new TransformAccessArray(fishes.Length);
             FishPositions = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
+            FishForces = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
             FishVelocities = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
             IsFishInBowl = new NativeArray<bool>(fishes.Length, Allocator.Persistent);
+            IsFishInPoi = new NativeArray<bool>(fishes.Length, Allocator.Persistent);
             for (int i = 0; i < fishes.Length; i++)
             {
                 transformAccessArray.Add(fishes[i].transform);
@@ -63,10 +68,12 @@ namespace Kingyo
             transformAccessArray.Dispose();
             FishPositions.Dispose();
             FishVelocities.Dispose();
+            FishForces.Dispose();
             useGravityFlags.Dispose();
             IsFishInBowl.Dispose();
+            IsFishInPoi.Dispose();
         }
-        void Update()
+        void FixedUpdate()
         {
             for (int i = 0; i < fishes.Length; i++)
             {
@@ -97,7 +104,7 @@ namespace Kingyo
                 int index = Random.Range(0, fishPrefabs.Length);
                 GameObject fish = Instantiate(fishPrefabs[index], pos, Quaternion.identity);
                 // randomize fish velocity and direction
-                Vector3 direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+                Vector3 direction = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
                 fish.transform.forward = direction;
                 if (IsAIEnabled)
                 {
@@ -121,13 +128,25 @@ namespace Kingyo
             JobHandle jobHandle = job.Schedule(FishPositions.Length, 64);
             jobHandle.Complete();
         }
+        void UpdateFishRotation()
+        {
+            var job = new UpdateFishRotation
+            {
+                velocities = FishVelocities,
+                isFishInPoi = IsFishInPoi
+            };
+            JobHandle jobHandle = job.Schedule(transformAccessArray);
+            jobHandle.Complete();
+        }
         void UpdateFishBehavior(Vector3 center, Bounds extents)
         {
             var job = new FishBehaviorJob
             {
                 positions = FishPositions,
                 velocities = FishVelocities,
+                forces = FishForces,
                 isFishInBowl = IsFishInBowl,
+                useGravityFlags = useGravityFlags,
                 avoidanceRadius = fishSetting.avoidanceRadius,
                 maxAvoidance = fishSetting.maxAvoidance,
                 boundaryAvoidanceWeight = fishSetting.boundaryAvoidanceWeight,
@@ -164,24 +183,23 @@ namespace Kingyo
                 }
                 else // fish is in water
                 {
-                    Vector3 vel = FishVelocities[i];
-                    fishRigidbody.MoveRotation(fishes[i].transform.rotation);
-                    if (vel.magnitude > fishes[i].maxSpeed)
-                    {
-                        vel = vel.normalized * fishes[i].maxSpeed;
-                    }
+                    Vector3 vel = fishRigidbody.velocity;
                     vel.y *= 0.8f;
-                    if (vel.magnitude > 1e-2f)
-                    {
-                        fishRigidbody.velocity = vel;
-                    }
+                    Vector3 force = FishForces[i];
+                    fishRigidbody.AddForce(force);
+                    if (vel.magnitude > fishes[i].maxSpeed)
+                        fishRigidbody.velocity = vel.normalized * fishes[i].maxSpeed;
                     else
+                        fishRigidbody.velocity = vel;
+                    if (vel.magnitude < 1e-2f)
                     {
-                        Vector3 direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-                        fishRigidbody.velocity = direction * Random.Range(0, fishes[i].maxSpeed);
+                        Vector3 direction = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+                        fishRigidbody.AddForce(direction * Random.Range(0, fishes[i].maxSpeed) / Time.fixedDeltaTime);
                     }
                 }
+                IsFishInPoi[i] = fishes[i].IsInPoi;
             }
+            UpdateFishRotation();
         }
         void UpdateFishRigidBodyWOAI()
         {
