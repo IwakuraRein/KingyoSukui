@@ -17,6 +17,20 @@ namespace Kingyo
                 // get its parent fish component and add its score to the total
                 scoreTotal += other.gameObject.transform.parent.gameObject.GetComponent<Fish>().score;
             }
+            // if (other.CompareTag("Hands"))
+            // {
+            //     if (!GameManager.Instance.hasBowlOnHand )
+            //     {
+            //         if (other.gameObject.transform.name == "RightHandAnchor" && !GameManager.Instance.rightHandOnUse) {
+            //             GameManager.Instance.rightHandOnUse = true;
+            //         } else if (other.gameObject.transform.name == "LeftHandAnchor" && !GameManager.Instance.leftHandOnUse) {
+            //             GameManager.Instance.leftHandOnUse = true;
+            //         }
+            //         GameManager.Instance.setCurrentPoi(this.gameObject);
+            //         this.transform.parent = other.gameObject.transform;
+            //         GameManager.Instance.hasPoiOnHand = true;
+            //     }
+            // }   
 
         }
 

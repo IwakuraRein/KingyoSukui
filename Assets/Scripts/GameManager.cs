@@ -13,6 +13,12 @@ namespace Kingyo
         private GameObject bowl;
         [SerializeField]
         private GameObject player;
+
+        public bool hasPoiOnHand = false;
+        public bool hasBowlOnHand = false;
+        public bool rightHandOnUse = false;
+        public bool leftHandOnUse = false;
+        public bool PoiOnLeft = false, PoiOnRight = false;
         private void Awake()
         {
             if (Instance == null)
@@ -30,6 +36,26 @@ namespace Kingyo
         void Start()
         {
 
+        }
+
+        public void setCurrentPoi(GameObject newPoi)
+        {
+            poi = newPoi;
+        }
+
+        public void destroyCurrentPoi()
+        {
+            hasPoiOnHand = false;
+            Destroy(poi);
+            if (PoiOnRight)
+            {
+                rightHandOnUse = false;
+                PoiOnRight = false;
+            } else if (PoiOnLeft)
+            {
+                leftHandOnUse = false;
+                PoiOnLeft = false;
+            }
         }
 
         // Update is called once per frame
