@@ -526,7 +526,11 @@ MonoBehaviour:
   bowl: {fileID: 1230139626}
   player: {fileID: 2057659465}
   hasPoiOnHand: 0
-  handSide: 1
+  hasBowlOnHand: 0
+  rightHandOnUse: 0
+  leftHandOnUse: 0
+  PoiOnLeft: 0
+  PoiOnRight: 0
 --- !u!4 &159216434
 Transform:
   m_ObjectHideFlags: 0
@@ -2200,11 +2204,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769715730}
   m_CullTransparentMesh: 1
---- !u!1 &914675913 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8425084656350580397, guid: 2d9da6a6071858444b27986daad708be, type: 3}
-  m_PrefabInstance: {fileID: 1263696510}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &921847018 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7583357748855600425, guid: a261bfe9db48f604593807fb9ffe7db4, type: 3}
