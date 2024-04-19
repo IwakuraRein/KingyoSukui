@@ -8,6 +8,7 @@ namespace Kingyo
     public class Poi : MonoBehaviour
     {
         public UltEvent<Poi, Fish> OnFishEnterPoi = new UltEvent<Poi, Fish>();
+        public UltEvent<Poi, Fish> OnFishExitPoi = new UltEvent<Poi, Fish>();
         void Start()
         {
 
@@ -44,6 +45,22 @@ namespace Kingyo
                         fish.IsInPoi = true;
                         OnFishEnterPoi?.Invoke(this, fish);
                         Debug.Log($"{fish} is on the poi!");
+                    }
+                }
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.tag == "Fish")
+            {
+                var fish = other.attachedRigidbody.gameObject.GetComponent<Fish>();
+                if (fish != null)
+                {
+                    if (fish.IsInPoi)
+                    {
+                        fish.IsInPoi = false;
+                        OnFishExitPoi?.Invoke(this, fish);
+                        Debug.Log($"{fish} leaves the poi!");
                     }
                 }
             }
