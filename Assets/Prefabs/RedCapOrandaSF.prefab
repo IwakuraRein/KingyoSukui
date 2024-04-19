@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2999092418846406964}
   m_Layer: 0
   m_Name: B_DEF_PelvicB3_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4356799671861171763}
   m_Layer: 0
   m_Name: body
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 7280429859439052826}
   m_Layer: 0
   m_Name: B_DEF_DorsalCS2
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 4379232792642523302}
   m_Layer: 0
   m_Name: finCaudalB
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 5111452774323213284}
   m_Layer: 0
   m_Name: B_DEF_CaudalB11_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 3352305251915784293}
   m_Layer: 0
   m_Name: B_DEF_PelvicB2_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 163980220490579157}
   m_Layer: 0
   m_Name: B_DEF_MouthB
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 775610496253629897}
   m_Layer: 0
   m_Name: B_DEF_PectoralCS_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 4386584898636409940}
   m_Layer: 0
   m_Name: B_DEF_PelvicB3_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 3180180110081771099}
   m_Layer: 0
   m_Name: B_DEF_DorsalB21
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 4945615226084627112}
   m_Layer: 0
   m_Name: B_DEF_Gill_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 6139129014283701317}
   m_Layer: 0
   m_Name: B_DEF_CaudalB32_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 2976984745313295939}
   m_Layer: 0
   m_Name: RIG_RedCapOranda
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 962886236346986016}
   m_Layer: 0
   m_Name: B_DEF_AnalCS
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 2251241204192221675}
   m_Layer: 0
   m_Name: B_DEF_Spine3
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 1063192555087125160}
   m_Layer: 0
   m_Name: B_DEF_PectoralB3_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 4258802912563744203}
   m_Layer: 0
   m_Name: finPectoralB
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 4884706159432094879}
   m_Layer: 0
   m_Name: finPelvicB
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1032,7 +1032,7 @@ GameObject:
   - component: {fileID: 851279626327802103}
   m_Layer: 0
   m_Name: B_DEF_Spine4
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1067,7 +1067,7 @@ GameObject:
   - component: {fileID: 914626927772966644}
   m_Layer: 0
   m_Name: finDorsalB
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1211,7 +1211,7 @@ GameObject:
   - component: {fileID: 5828349743775036236}
   m_Layer: 0
   m_Name: B_DEF_Spine5
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 4118181063467119546}
   m_Layer: 0
   m_Name: B_DEF_DorsalB22
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1287,7 +1287,7 @@ GameObject:
   - component: {fileID: 2275186143586999715}
   m_Layer: 0
   m_Name: B_DEF_DorsalCS3
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1318,7 +1318,7 @@ GameObject:
   - component: {fileID: 4051407371552246762}
   m_Layer: 0
   m_Name: B_DEF_CaudalB22_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1349,7 +1349,7 @@ GameObject:
   - component: {fileID: 1234681636787480435}
   m_Layer: 0
   m_Name: B_DEF_CaudalB22_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 2476829056243171603}
   m_Layer: 0
   m_Name: B_DEF_DorsalB12
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1411,7 +1411,7 @@ GameObject:
   - component: {fileID: 5901492370589688302}
   m_Layer: 0
   m_Name: B_DEF_DorsalB11
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1443,7 +1443,7 @@ GameObject:
   - component: {fileID: 7862632169750337278}
   m_Layer: 0
   m_Name: B_DEF_PectoralB1_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1476,7 +1476,7 @@ GameObject:
   - component: {fileID: 5478711857045144817}
   m_Layer: 0
   m_Name: B_DEF_PectoralB2_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1507,7 +1507,7 @@ GameObject:
   - component: {fileID: 3034601601694999512}
   m_Layer: 0
   m_Name: B_DEF_DorsalB31
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1539,7 +1539,7 @@ GameObject:
   - component: {fileID: 8928067849396518161}
   m_Layer: 0
   m_Name: B_DEF_DorsalCS1
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1570,7 +1570,7 @@ GameObject:
   - component: {fileID: 4574388529397179580}
   m_Layer: 0
   m_Name: B_DEF_CaudalCS1_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1601,7 +1601,7 @@ GameObject:
   - component: {fileID: 4855076088930877585}
   m_Layer: 0
   m_Name: B_DEF_Spine1
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1645,7 +1645,7 @@ GameObject:
   - component: {fileID: 5274346446320459234}
   m_Layer: 0
   m_Name: B_DEF_CaudalB31_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1677,7 +1677,7 @@ GameObject:
   - component: {fileID: 4681800948424659522}
   m_Layer: 0
   m_Name: B_DEF_Head
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1712,7 +1712,7 @@ GameObject:
   - component: {fileID: 7910079008985065432}
   m_Layer: 0
   m_Name: B_DEF_CaudalB21_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1744,7 +1744,7 @@ GameObject:
   - component: {fileID: 8625775291320846487}
   m_Layer: 0
   m_Name: B_DEF_CaudalB21_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1776,7 +1776,7 @@ GameObject:
   - component: {fileID: 6792831269294172743}
   m_Layer: 0
   m_Name: B_DEF_CaudalCS3_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1807,7 +1807,7 @@ GameObject:
   - component: {fileID: 5089561845118469926}
   m_Layer: 0
   m_Name: B_DEF_Gill_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1838,7 +1838,7 @@ GameObject:
   - component: {fileID: 1152653387244680564}
   m_Layer: 0
   m_Name: B_DEF_PelvicCS_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1869,7 +1869,7 @@ GameObject:
   - component: {fileID: 7199728308633177400}
   m_Layer: 0
   m_Name: B_MCH_Root
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1902,7 +1902,7 @@ GameObject:
   - component: {fileID: 5027035793497088207}
   m_Layer: 0
   m_Name: B_DEF_CaudalCS2_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1933,7 +1933,7 @@ GameObject:
   - component: {fileID: 1320299750119775437}
   m_Layer: 0
   m_Name: B_DEF_Eye_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1964,7 +1964,7 @@ GameObject:
   - component: {fileID: 372443379196997883}
   m_Layer: 0
   m_Name: B_DEF_CaudalB12_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1995,7 +1995,7 @@ GameObject:
   - component: {fileID: 38356368539384288}
   m_Layer: 0
   m_Name: B_DEF_CaudalB11_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2027,7 +2027,7 @@ GameObject:
   - component: {fileID: 7302776670216007628}
   m_Layer: 0
   m_Name: B_DEF_CaudalCS2_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2058,7 +2058,7 @@ GameObject:
   - component: {fileID: 1134112358063250786}
   m_Layer: 0
   m_Name: B_DEF_DorsalB32
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2089,7 +2089,7 @@ GameObject:
   - component: {fileID: 7997494317778759822}
   m_Layer: 0
   m_Name: B_DEF_PectoralB2_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2120,7 +2120,7 @@ GameObject:
   - component: {fileID: 483863366782398853}
   m_Layer: 0
   m_Name: B_DEF_CaudalCS1_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2151,7 +2151,7 @@ GameObject:
   - component: {fileID: 8045998466024982947}
   m_Layer: 0
   m_Name: B_DEF_CaudalB32_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2182,7 +2182,7 @@ GameObject:
   - component: {fileID: 921001080105417731}
   m_Layer: 0
   m_Name: B_DEF_Eye_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2213,7 +2213,7 @@ GameObject:
   - component: {fileID: 2382831356438194755}
   m_Layer: 0
   m_Name: B_DEF_AnalB1
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2246,7 +2246,7 @@ GameObject:
   - component: {fileID: 1825735819044401734}
   m_Layer: 0
   m_Name: B_DEF_PelvicCS_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2277,7 +2277,7 @@ GameObject:
   - component: {fileID: 2825419125289939630}
   m_Layer: 0
   m_Name: B_DEF_CaudalB31_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2309,7 +2309,7 @@ GameObject:
   - component: {fileID: 2070449617080339323}
   m_Layer: 0
   m_Name: B_DEF_PelvicB1_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2342,7 +2342,7 @@ GameObject:
   - component: {fileID: 4106111745956526907}
   m_Layer: 0
   m_Name: B_DEF_PelvicB1_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2375,7 +2375,7 @@ GameObject:
   - component: {fileID: 3214984293349317436}
   m_Layer: 0
   m_Name: B_DEF_MouthT
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2407,7 +2407,7 @@ GameObject:
   - component: {fileID: 3617253216403594366}
   m_Layer: 0
   m_Name: eyes
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2554,7 +2554,7 @@ GameObject:
   - component: {fileID: 726398464238719389}
   m_Layer: 0
   m_Name: B_DEF_PectoralB1_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2587,7 +2587,7 @@ GameObject:
   - component: {fileID: 1074032020765041999}
   m_Layer: 0
   m_Name: B_DEF_PectoralB3_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2618,7 +2618,7 @@ GameObject:
   - component: {fileID: 4369533836433184222}
   m_Layer: 0
   m_Name: B_DEF_CaudalCS3_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2649,7 +2649,7 @@ GameObject:
   - component: {fileID: 4373605513122188296}
   m_Layer: 0
   m_Name: B_DEF_PectoralCS_R
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2680,7 +2680,7 @@ GameObject:
   - component: {fileID: 5619567316705343048}
   m_Layer: 0
   m_Name: B_DEF_Spine2
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2715,7 +2715,7 @@ GameObject:
   - component: {fileID: 8673350078293224563}
   m_Layer: 0
   m_Name: RedCapOrandaSF
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2756,6 +2756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 0.5
+  score: 0
 --- !u!111 &1691826694141874989
 Animation:
   m_ObjectHideFlags: 0
@@ -2811,7 +2812,7 @@ GameObject:
   - component: {fileID: 5316048628423241466}
   m_Layer: 0
   m_Name: finAnalB
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2955,7 +2956,7 @@ GameObject:
   - component: {fileID: 6063467352244325757}
   m_Layer: 0
   m_Name: B_DEF_CaudalB12_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2986,7 +2987,7 @@ GameObject:
   - component: {fileID: 8016415676330540197}
   m_Layer: 0
   m_Name: B_DEF_PelvicB2_L
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3017,7 +3018,7 @@ GameObject:
   - component: {fileID: 2944310498289119983}
   m_Layer: 0
   m_Name: B_DEF_AnalB3
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3048,7 +3049,7 @@ GameObject:
   - component: {fileID: 8670194599707344502}
   m_Layer: 0
   m_Name: B_DEF_AnalB2
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

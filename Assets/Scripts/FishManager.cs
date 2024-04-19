@@ -40,10 +40,20 @@ namespace Kingyo
         private TransformAccessArray transformAccessArray;
         [SerializeField]
         [Tooltip("Enable AI for fish. If false, fish will not move. AI is disabled for debugging.")]
-        private bool IsAIEnabled = true;
+        private bool isAIEnabled = true;
         [SerializeField]
         private FishSetting fishSetting;
         public FishSetting FishSetting { get => fishSetting; }
+
+        public bool IsAIEnabled
+        { 
+            get => isAIEnabled;
+            set
+            {
+                isAIEnabled = value;
+            }
+        }
+
         void Start()
         {
             if (fishSetting.WaterDepth > fishSetting.Bounds.extents.y * 2)
@@ -81,7 +91,7 @@ namespace Kingyo
                 FishVelocities[i] = fishes[i].GetComponent<Rigidbody>().velocity;
             }
             UpdateFishUseGravity(fishSetting.Center, fishSetting.Bounds);
-            if (IsAIEnabled)
+            if (isAIEnabled)
             {
                 UpdateFishBehavior(fishSetting.Center, fishSetting.Bounds);
                 UpdateFishRigidBody();
@@ -106,7 +116,7 @@ namespace Kingyo
                 // randomize fish velocity and direction
                 Vector3 direction = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
                 fish.transform.forward = direction;
-                if (IsAIEnabled)
+                if (isAIEnabled)
                 {
                     Vector3 velocity = direction * Random.Range(0, fish.GetComponent<Fish>().maxSpeed);
                     fish.GetComponent<Rigidbody>().velocity = velocity;

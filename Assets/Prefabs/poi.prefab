@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8386471108447059233}
   m_Layer: 0
   m_Name: polySurface3
-  m_TagString: poi
+  m_TagString: poi surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 5663439301379012768}
   m_Layer: 0
   m_Name: poi
-  m_TagString: Untagged
+  m_TagString: poi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,8 +327,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.14854676, y: 0.011391044, z: 0.25833285}
-  m_Center: {x: 0, y: -0.0011208057, z: 0.09192288}
+  m_Size: {x: 0.15, y: 0.03, z: 0.22}
+  m_Center: {x: 0, y: 0.01, z: 0.09}
 --- !u!114 &5663439301379012768
 MonoBehaviour:
   m_ObjectHideFlags: 0

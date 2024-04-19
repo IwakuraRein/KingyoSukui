@@ -1,39 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
-using Kingyo;
 using UnityEngine;
+using UltEvents;
 
-public class Poi : MonoBehaviour
+namespace Kingyo
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Poi : MonoBehaviour
     {
-        
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Hands"))
+        public UltEvent<Poi, Fish> OnFishEnterPoi = new UltEvent<Poi, Fish>();
+        void Start()
         {
-            if (!GameManager.Instance.hasPoiOnHand)
-            {
-                if (other.gameObject.transform.name == "RightHandAnchor" && !GameManager.Instance.rightHandOnUse) {
-                    GameManager.Instance.rightHandOnUse = true;
-                    GameManager.Instance.PoiOnRight = true;
-                } else if (other.gameObject.transform.name == "LeftHandAnchor" && !GameManager.Instance.leftHandOnUse) {
-                    GameManager.Instance.leftHandOnUse = true;
-                    GameManager.Instance.PoiOnLeft = true;
-                }
-                GameManager.Instance.setCurrentPoi(this.gameObject);
-                this.transform.parent = other.gameObject.transform;
-                GameManager.Instance.hasPoiOnHand = true;
-            }
-        }   
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Hands"))
+            {
+                if (!GameManager.Instance.hasPoiOnHand)
+                {
+                    if (other.gameObject.transform.name == "RightHandAnchor" && !GameManager.Instance.rightHandOnUse)
+                    {
+                        GameManager.Instance.rightHandOnUse = true;
+                        GameManager.Instance.PoiOnRight = true;
+                    }
+                    else if (other.gameObject.transform.name == "LeftHandAnchor" && !GameManager.Instance.leftHandOnUse)
+                    {
+                        GameManager.Instance.leftHandOnUse = true;
+                        GameManager.Instance.PoiOnLeft = true;
+                    }
+                    GameManager.Instance.setCurrentPoi(this.gameObject);
+                    this.transform.parent = other.gameObject.transform;
+                    GameManager.Instance.hasPoiOnHand = true;
+                }
+            }
+            if (other.gameObject.tag == "Fish")
+            {
+                var fish = other.attachedRigidbody.gameObject.GetComponent<Fish>();
+                if (fish != null)
+                {
+                    if (!fish.IsInPoi)
+                    {
+                        fish.IsInPoi = true;
+                        OnFishEnterPoi?.Invoke(this, fish);
+                        Debug.Log($"{fish} is on the poi!");
+                    }
+                }
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }
