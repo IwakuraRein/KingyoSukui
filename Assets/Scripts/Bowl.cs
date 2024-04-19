@@ -1,45 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
+using UltEvents;
 using UnityEngine;
 
 namespace Kingyo
 {
     public class Bowl : MonoBehaviour
     {
-        private HashSet<GameObject> fishesInBowl = new HashSet<GameObject>();
+        public UltEvent<Bowl, Fish> OnFishEnterBowl = new UltEvent<Bowl, Fish>();
+        public UltEvent<Bowl, Fish> OnFishExitBowl = new UltEvent<Bowl, Fish>();
+        private HashSet<Fish> fishesInBowl = new HashSet<Fish>();
         private int scoreTotal;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Fish"))
+            if (other.gameObject.tag == "Fish")
             {
-                fishesInBowl.Add(other.gameObject);
-                // get its parent fish component and add its score to the total
-                scoreTotal += other.gameObject.transform.parent.gameObject.GetComponent<Fish>().score;
-            }
-            // if (other.CompareTag("Hands"))
-            // {
-            //     if (!GameManager.Instance.hasBowlOnHand )
-            //     {
-            //         if (other.gameObject.transform.name == "RightHandAnchor" && !GameManager.Instance.rightHandOnUse) {
-            //             GameManager.Instance.rightHandOnUse = true;
-            //         } else if (other.gameObject.transform.name == "LeftHandAnchor" && !GameManager.Instance.leftHandOnUse) {
-            //             GameManager.Instance.leftHandOnUse = true;
-            //         }
-            //         GameManager.Instance.setCurrentPoi(this.gameObject);
-            //         this.transform.parent = other.gameObject.transform;
-            //         GameManager.Instance.hasPoiOnHand = true;
-            //     }
-            // }   
-
+                var fish = other.attachedRigidbody.gameObject.GetComponent<Fish>();
+                if (fish != null)
+                {
+                    if (!fish.IsInBowl)
+                    {
+                        fish.IsInBowl = true;
+                        OnFishEnterBowl?.Invoke(this, fish);
+                        Debug.Log($"{fish} is in the bowl!");
+                        fishesInBowl.Add(fish);
+                        // get its parent fish component and add its score to the total
+                        scoreTotal += fish.score;
+                    }
+                }
+            } 
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Fish"))
+            if (other.gameObject.tag == "Fish")
             {
-                fishesInBowl.Remove(other.gameObject);
-                scoreTotal -= other.gameObject.transform.parent.gameObject.GetComponent<Fish>().score;
+                var fish = other.attachedRigidbody.gameObject.GetComponent<Fish>();
+                if (fish != null)
+                {
+                    if (fish.IsInBowl)
+                    {
+                        fish.IsInBowl = false;
+                        OnFishExitBowl?.Invoke(this, fish);
+                        Debug.Log($"{fish} leaves the bowl!");
+                        fishesInBowl.Remove(fish);
+                        // get its parent fish component and add its score to the total
+                        scoreTotal -= fish.score;
+                    }
+                }
             }
         }
 
