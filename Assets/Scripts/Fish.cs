@@ -23,32 +23,6 @@ namespace Kingyo
         {
 
         }
-        //void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.gameObject.tag == "poi" && !IsInPoi)
-        //    {
-        //        isInPoi = true;
-        //        Debug.Log($"{this} is on the poi!");
-        //    }
-        //    if (other.gameObject.tag == "bowl" && !IsInBowl)
-        //    {
-        //        isInBowl = true;
-        //        Debug.Log($"{this} is in the bowl!");
-        //    }
-        //}
-        //void OnTriggerExit(Collider other)
-        //{
-        //    if (other.gameObject.tag == "poi" && IsInPoi)
-        //    {
-        //        isInPoi = false;
-
-        //        Debug.Log($"{this} leaves the poi!");
-        //    }
-        //    if (other.gameObject.tag == "bowl" &&IsInBowl)
-        //    {
-        //        isInBowl = false;
-        //    }
-        //}
     }
 }
 

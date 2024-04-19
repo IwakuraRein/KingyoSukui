@@ -1095,10 +1095,10 @@ CapsuleCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0004904001
+  m_Radius: 0.00036295885
   m_Height: 0.0009808003
   m_Direction: 1
-  m_Center: {x: 0.0000016927436, y: 0.00023611072, z: -0.000053487376}
+  m_Center: {x: 0, y: 0.00023611063, z: -0.000053487376}
 --- !u!1 &1742915145472434066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,7 +1780,7 @@ CapsuleCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0004862266
+  m_Radius: 0.0004
   m_Height: 0.0009724533
   m_Direction: 1
   m_Center: {x: -4.2069192e-11, y: 0.00066540204, z: -0.000074557596}
@@ -2062,7 +2062,7 @@ Rigidbody:
   m_GameObject: {fileID: 4566545722189806337}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.05
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

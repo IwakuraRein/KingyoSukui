@@ -22,5 +22,8 @@ namespace Kingyo
         private GameObject tank; // tank object
         public Bounds Bounds { get => tank.GetComponent<MeshRenderer>().bounds; }
         public Vector3 Center { get => Bounds.center; }
+
+        [Header("bowl behaviors")]
+        public float speedInBowl;
     }
 }

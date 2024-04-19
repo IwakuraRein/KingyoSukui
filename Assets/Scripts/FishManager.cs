@@ -46,7 +46,7 @@ namespace Kingyo
         public FishSetting FishSetting { get => fishSetting; }
 
         public bool IsAIEnabled
-        { 
+        {
             get => isAIEnabled;
             set
             {
@@ -176,23 +176,24 @@ namespace Kingyo
             {
                 var fishRigidbody = fishes[i].GetComponent<Rigidbody>();
                 fishRigidbody.useGravity = useGravityFlags[i];
-                if (fishes[i].IsInBowl || fishRigidbody.useGravity)
+                if (fishes[i].IsInBowl)
                 {
-                    if (fishes[i].IsInBowl)
-                    {
-                        IsFishInBowl[i] = true;
-                        fishRigidbody.useGravity = false;
-                        fishRigidbody.velocity.Set(fishRigidbody.velocity.x, 0, fishRigidbody.velocity.z);
-                        fishRigidbody.angularVelocity = Vector3.zero;
-                    }
-                    else
-                    {
-                        fishRigidbody.velocity *= 0.1f;
-                        fishRigidbody.angularVelocity = Vector3.zero;
-                    }
+                    IsFishInBowl[i] = true;
+                    fishRigidbody.useGravity = false;
+                    if (fishRigidbody.velocity.magnitude > fishSetting.speedInBowl)
+                        fishRigidbody.velocity *= 0.5f;
+                    fishRigidbody.angularVelocity *= 0.5f;
+                    Debug.Log("Fish " + i + " is in bowl");
+                }
+                else if (fishRigidbody.useGravity)
+                {
+                    IsFishInBowl[i] = false;
+                    fishRigidbody.angularVelocity = Vector3.zero;
+                    Debug.Log("Fish " + i + " is in air");
                 }
                 else // fish is in water
                 {
+                    IsFishInBowl[i] = false;
                     Vector3 vel = fishRigidbody.velocity;
                     vel.y *= 0.8f;
                     Vector3 force = FishForces[i];
@@ -206,6 +207,7 @@ namespace Kingyo
                         Vector3 direction = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
                         fishRigidbody.AddForce(direction * Random.Range(0, fishes[i].maxSpeed) / Time.fixedDeltaTime);
                     }
+                    Debug.Log("Fish " + i + " is in water");
                 }
                 IsFishInPoi[i] = fishes[i].IsInPoi;
             }
@@ -219,21 +221,23 @@ namespace Kingyo
                 fishRigidbody.useGravity = useGravityFlags[i];
                 fishRigidbody.velocity = new Vector3(0, 0, 0);
                 fishRigidbody.angularVelocity = new Vector3(0, 0, 0);
-                if (fishes[i].IsInBowl || fishRigidbody.useGravity)
+                if (fishes[i].IsInBowl)
                 {
-                    if (fishes[i].IsInBowl)
-                    {
-                        Debug.Log("Fish is in bowl");
-                        IsFishInBowl[i] = true;
-                        fishRigidbody.useGravity = false;
-                        fishRigidbody.velocity.Set(fishRigidbody.velocity.x, 0, fishRigidbody.velocity.z);
-                        fishRigidbody.angularVelocity = Vector3.zero;
-                    }
-                    else
-                    {
-                        fishRigidbody.velocity *= 0.1f;
-                        fishRigidbody.angularVelocity = Vector3.zero;
-                    }
+                    IsFishInBowl[i] = true;
+                    fishRigidbody.useGravity = false;
+                    if (fishRigidbody.velocity.magnitude > fishSetting.speedInBowl)
+                        fishRigidbody.velocity *= 0.8f;
+                    fishRigidbody.angularVelocity *= 0.5f;
+                }
+                else if (fishRigidbody.useGravity)
+                {
+                    IsFishInBowl[i] = false;
+                    fishRigidbody.angularVelocity = Vector3.zero;
+                }
+                else
+                {
+                    fishRigidbody.velocity *= 0.1f;
+                    fishRigidbody.angularVelocity = Vector3.zero;
                 }
             }
         }

@@ -1368,7 +1368,7 @@ MonoBehaviour:
   - {fileID: 4566545722189806337, guid: 0562610692ce37f4194a26ab891e50e5, type: 3}
   isAIEnabled: 1
   fishSetting:
-    MaxFishCount: 50
+    MaxFishCount: 10
     PerimeterThresholdPercentage: {x: 0.3, y: 0.2, z: 0.3}
     WaterDepth: 0.3
     OffsetPercentage: {x: 0.1, y: 0.35, z: 0.2}
@@ -1377,6 +1377,7 @@ MonoBehaviour:
     maxAvoidance: 1
     boundaryAvoidanceWeight: 1
     tank: {fileID: 8425084655456007379}
+    speedInBowl: 0.01
 --- !u!4 &456133167
 Transform:
   m_ObjectHideFlags: 0
@@ -1796,10 +1797,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1522436711356347182, guid: 0562610692ce37f4194a26ab891e50e5, type: 3}
-      propertyPath: m_TagString
-      value: Fish
-      objectReference: {fileID: 0}
     - target: {fileID: 3408765554882758246, guid: 0562610692ce37f4194a26ab891e50e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.653
@@ -1843,14 +1840,6 @@ PrefabInstance:
     - target: {fileID: 4566545722189806337, guid: 0562610692ce37f4194a26ab891e50e5, type: 3}
       propertyPath: m_Name
       value: BroadtailMoorSF
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566545722189806337, guid: 0562610692ce37f4194a26ab891e50e5, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440265207942987695, guid: 0562610692ce37f4194a26ab891e50e5, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3714,7 +3703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.607
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4021,22 +4010,6 @@ PrefabInstance:
     - target: {fileID: 2392516274923908852, guid: ec7a939a6b0d16142bb77a2900a0fa64, type: 3}
       propertyPath: m_Name
       value: waterTank
-      objectReference: {fileID: 0}
-    - target: {fileID: 2857000362372954348, guid: ec7a939a6b0d16142bb77a2900a0fa64, type: 3}
-      propertyPath: m_Size.y
-      value: 0.84119385
-      objectReference: {fileID: 0}
-    - target: {fileID: 2857000362372954348, guid: ec7a939a6b0d16142bb77a2900a0fa64, type: 3}
-      propertyPath: m_Size.z
-      value: 10.000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 2857000362372954348, guid: ec7a939a6b0d16142bb77a2900a0fa64, type: 3}
-      propertyPath: m_Center.y
-      value: -0.43696615
-      objectReference: {fileID: 0}
-    - target: {fileID: 2857000362372954348, guid: ec7a939a6b0d16142bb77a2900a0fa64, type: 3}
-      propertyPath: m_Center.z
-      value: 0.00000022572513
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
