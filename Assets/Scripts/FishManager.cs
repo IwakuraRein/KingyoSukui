@@ -183,13 +183,12 @@ namespace Kingyo
                     if (fishRigidbody.velocity.magnitude > fishSetting.speedInBowl)
                         fishRigidbody.velocity *= 0.5f;
                     fishRigidbody.angularVelocity *= 0.5f;
-                    Debug.Log("Fish " + i + " is in bowl");
+                    UpdateFishRotation();
                 }
                 else if (fishRigidbody.useGravity)
                 {
                     IsFishInBowl[i] = false;
                     fishRigidbody.angularVelocity = Vector3.zero;
-                    Debug.Log("Fish " + i + " is in air");
                 }
                 else // fish is in water
                 {
@@ -207,11 +206,10 @@ namespace Kingyo
                         Vector3 direction = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
                         fishRigidbody.AddForce(direction * Random.Range(0, fishes[i].maxSpeed) / Time.fixedDeltaTime);
                     }
-                    Debug.Log("Fish " + i + " is in water");
+                    UpdateFishRotation();
                 }
                 IsFishInPoi[i] = fishes[i].IsInPoi;
             }
-            UpdateFishRotation();
         }
         void UpdateFishRigidBodyWOAI()
         {

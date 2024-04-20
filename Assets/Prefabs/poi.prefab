@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6131253786897329299}
   - component: {fileID: 3328588056203835221}
   - component: {fileID: 8386471108447059233}
+  - component: {fileID: 7400020265416927469}
   m_Layer: 0
   m_Name: polySurface3
   m_TagString: poi surface
@@ -106,6 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4164511204261677510, guid: f07e5943ee89857418f943979a6ad918, type: 3}
+--- !u!114 &7400020265416927469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135553037058052180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41d2301a111f3a543a695cc651464b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 0.1
 --- !u!1 &2885341312223507895
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,3 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9687a90e01d2d245a95759863c78878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnFishEnterPoi:
+    _PersistentCalls: []
+  OnFishExitPoi:
+    _PersistentCalls: []
