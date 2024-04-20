@@ -14,7 +14,6 @@ namespace Kingyo
             foreach (ContactPoint contact in collision.contacts)
             {
                 Debug.DrawRay(contact.point, contact.normal * 10, Color.red);
-                // 检测撞击力度
                 if (collision.relativeVelocity.magnitude > threshold || collision.impulse.magnitude > threshold)
                 {
                     BreakNet(contact.point);
@@ -30,9 +29,7 @@ namespace Kingyo
 
         public void BreakNet(Vector3 point)
         {
-            // 破网
             Debug.Log("Break Net");
-            // 破网后，网消失
             GameObject.Destroy(this.gameObject);
         }
     }
