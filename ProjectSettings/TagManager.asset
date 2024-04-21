@@ -9,6 +9,8 @@ TagManager:
   - Anchor
   - Fish
   - Hands
+  - poi surface
+  - Water
   layers:
   - Default
   - TransparentFX

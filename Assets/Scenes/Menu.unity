@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: d9e08fc331ca24d4bafcae086ce76e96, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 88d0d6fb7411e9f48b353bf23ff6e622, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -4332,6 +4332,18 @@ PrefabInstance:
     - target: {fileID: 2392516274923908852, guid: ec7a939a6b0d16142bb77a2900a0fa64, type: 3}
       propertyPath: m_Name
       value: waterTank
+      objectReference: {fileID: 0}
+    - target: {fileID: 2510997257229855846, guid: ec7a939a6b0d16142bb77a2900a0fa64, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2510997257229855846, guid: ec7a939a6b0d16142bb77a2900a0fa64, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167365249312098318, guid: ec7a939a6b0d16142bb77a2900a0fa64, type: 3}
+      propertyPath: m_TagString
+      value: water
       objectReference: {fileID: 0}
     - target: {fileID: 7889194557101511731, guid: ec7a939a6b0d16142bb77a2900a0fa64, type: 3}
       propertyPath: m_LocalPosition.y

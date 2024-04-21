@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6664358993437552698, guid: f07e5943ee89857418f943979a6ad918, type: 3}
+  - {fileID: 2100000, guid: 0b960091cd5283144b6e88f3942de759, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -429,7 +429,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9687a90e01d2d245a95759863c78878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  render: {fileID: 3328588056203835221}
+  timeGetWet: 1
+  timeGetDry: 3
   OnFishEnterPoi:
     _PersistentCalls: []
   OnFishExitPoi:
+    _PersistentCalls: []
+  OnPoiEnterWater:
+    _PersistentCalls: []
+  OnPoiExitWater:
     _PersistentCalls: []
