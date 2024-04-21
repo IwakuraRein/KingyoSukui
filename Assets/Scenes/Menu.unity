@@ -2322,7 +2322,7 @@ PrefabInstance:
     - target: {fileID: 6867673548164026974, guid: a4790c16f87753744bd486c48abad5a4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 05b856889db97f5478e21d5807311cfc, type: 2}
+      objectReference: {fileID: 2100000, guid: e70acfa29d7d5f840bc0fa1b27b2b090, type: 2}
     - target: {fileID: 6989310181982025234, guid: a4790c16f87753744bd486c48abad5a4, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -2379,10 +2379,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7211749738936659234, guid: a4790c16f87753744bd486c48abad5a4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7320507739454436536, guid: a4790c16f87753744bd486c48abad5a4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 05b856889db97f5478e21d5807311cfc, type: 2}
+      objectReference: {fileID: 2100000, guid: e70acfa29d7d5f840bc0fa1b27b2b090, type: 2}
     - target: {fileID: 9121855712820090221, guid: a4790c16f87753744bd486c48abad5a4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647

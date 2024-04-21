@@ -15,6 +15,26 @@ MonoBehaviour:
   components:
   - {fileID: 8652724083451944223}
   - {fileID: 7730570406640117608}
+  - {fileID: 2400915174301782865}
+--- !u!114 &2400915174301782865
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 1
+  temperature:
+    m_OverrideState: 1
+    m_Value: -16
+  tint:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &7730570406640117608
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -33,7 +53,7 @@ MonoBehaviour:
     m_Value: {x: 1, y: 1, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.19402984}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.20895521}
   gain:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 1, w: 0}
