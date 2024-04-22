@@ -7,8 +7,14 @@ namespace Kingyo
 {
     public class Net : MonoBehaviour
     {
+        [SerializeField]
+        Renderer render;
         public float threshold = 0.1f;
 
+        private void Start()
+        {
+            render = GetComponent<Renderer>();
+        }
         void OnCollisionEnter(Collision collision)
         {
             foreach (ContactPoint contact in collision.contacts)
@@ -30,7 +36,15 @@ namespace Kingyo
         public void BreakNet(Vector3 point)
         {
             Debug.Log("Break Net");
-            GameObject.Destroy(this.gameObject);
+            //StartCoroutine(destroyParent(3f));
+            //GameObject.Destroy(this.gameObject);
+            render.enabled = false;
+        }
+
+        IEnumerator destroyParent(float time)
+        {
+            yield return new WaitForSeconds(time);
+            GameObject.Destroy(this.transform.parent);
         }
     }
 }

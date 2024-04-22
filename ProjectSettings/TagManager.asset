@@ -11,6 +11,8 @@ TagManager:
   - Hands
   - poi surface
   - Water
+  - water
+  - SamplesInfoPanel
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Water
   - UI
   - Bowl
-  - 
+  - Poi
   - 
   - 
   - 

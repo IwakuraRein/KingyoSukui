@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8386471108447059233}
   - component: {fileID: 6017664617083743799}
   - component: {fileID: 7400020265416927469}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: polySurface3
   m_TagString: poi surface
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ MeshCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4164511204261677510, guid: f07e5943ee89857418f943979a6ad918, type: 3}
 --- !u!54 &6017664617083743799
@@ -127,7 +127,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d2301a111f3a543a695cc651464b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  render: {fileID: 0}
   threshold: 0.04
 --- !u!1 &2885341312223507895
 GameObject:
@@ -160,7 +161,7 @@ GameObject:
   - component: {fileID: 3036499772342035018}
   - component: {fileID: 6693909367539749301}
   - component: {fileID: 8657743067688128157}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +252,7 @@ MeshCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6329158148709259305, guid: f07e5943ee89857418f943979a6ad918, type: 3}
 --- !u!1 &3335217799003580251
@@ -266,7 +267,7 @@ GameObject:
   - component: {fileID: 4393931312808626180}
   - component: {fileID: 2577340557567058877}
   - component: {fileID: 7871042368096203408}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +358,7 @@ MeshCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5597002278806442958, guid: f07e5943ee89857418f943979a6ad918, type: 3}
 --- !u!1 &7583357748855600425
@@ -371,7 +372,7 @@ GameObject:
   - component: {fileID: 395141057136355517}
   - component: {fileID: 9031376956914587091}
   - component: {fileID: 5663439301379012768}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: poi
   m_TagString: poi
   m_Icon: {fileID: 0}

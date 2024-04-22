@@ -2309,7 +2309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 0.5
-  score: 0
+  score: 1
 --- !u!111 &2244345827479049079
 Animation:
   m_ObjectHideFlags: 0
