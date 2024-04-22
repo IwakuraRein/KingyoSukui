@@ -39,6 +39,7 @@ namespace Kingyo
             //StartCoroutine(destroyParent(3f));
             //GameObject.Destroy(this.gameObject);
             render.enabled = false;
+            GameManager.Instance.destroyCurrentPoi();
         }
 
         IEnumerator destroyParent(float time)

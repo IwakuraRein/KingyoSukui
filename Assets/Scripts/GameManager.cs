@@ -1,3 +1,5 @@
+using Oculus.Interaction;
+using Oculus.Interaction.HandGrab;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +15,15 @@ namespace Kingyo
         private GameObject bowl;
         [SerializeField]
         private GameObject player;
+        [SerializeField]
+        PoiGrabbableProxy[] grabbablePois;
 
-        public bool hasPoiOnHand = false;
-        public bool hasBowlOnHand = false;
-        public bool rightHandOnUse = false;
-        public bool leftHandOnUse = false;
-        public bool PoiOnLeft = false, PoiOnRight = false;
+        public bool hasPoiOnHand { get; private set; } = false;
+        //public bool hasBowlOnHand { get; private set; } = false;
+        //public bool rightHandOnUse { get; private set; } = false;
+        //public bool leftHandOnUse{ get; private set; } = false;
+        //public bool PoiOnLeft { get; private set; } = false;
+        //public bool PoiOnRight { get; private set; } = false;
         private void Awake()
         {
             if (Instance == null)
@@ -46,16 +51,22 @@ namespace Kingyo
         public void destroyCurrentPoi()
         {
             hasPoiOnHand = false;
-            Destroy(poi);
-            if (PoiOnRight)
-            {
-                rightHandOnUse = false;
-                PoiOnRight = false;
-            } else if (PoiOnLeft)
-            {
-                leftHandOnUse = false;
-                PoiOnLeft = false;
-            }
+            poi.SetActive(false);
+            //Destroy(poi);
+            //if (PoiOnRight)
+            //{
+            //    rightHandOnUse = false;
+            //    PoiOnRight = false;
+            //} else if (PoiOnLeft)
+            //{
+            //    leftHandOnUse = false;
+            //    PoiOnLeft = false;
+            //}
+        }
+        public void OnPoiGetGrabbed(PoiGrabbableProxy p)
+        {
+            poi.SetActive(true);
+            hasPoiOnHand = true;
         }
 
         // Update is called once per frame
