@@ -17,6 +17,7 @@ namespace Kingyo
         private GameObject player;
         [SerializeField]
         PoiGrabbableProxy[] grabbablePois;
+        public PoiGrabbableProxy currentGrabbingPoi { get; private set; }
 
         public bool hasPoiOnHand { get; private set; } = false;
         //public bool hasBowlOnHand { get; private set; } = false;
@@ -65,8 +66,17 @@ namespace Kingyo
         }
         public void OnPoiGetGrabbed(PoiGrabbableProxy p)
         {
+            if (hasPoiOnHand) return;
+            currentGrabbingPoi = p;
             poi.SetActive(true);
             hasPoiOnHand = true;
+        }
+        public void OnPoiReleased(PoiGrabbableProxy p)
+        {
+            if (!hasPoiOnHand || currentGrabbingPoi != currentGrabbingPoi) return;
+            currentGrabbingPoi = null;
+            poi.SetActive(false);
+            hasPoiOnHand = false;
         }
 
         // Update is called once per frame

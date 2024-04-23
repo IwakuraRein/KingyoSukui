@@ -14,7 +14,7 @@ namespace Kingyo
         public bool IsGrabbing { get; private set; }
         public void Update()
         {
-            if (interactable.Interactors.Count != 0)
+            if (!GameManager.Instance.hasPoiOnHand && interactable.Interactors.Count != 0)
             {
                 GameManager.Instance.OnPoiGetGrabbed(this);
                 foreach (var r in render)
@@ -22,6 +22,15 @@ namespace Kingyo
                     r.enabled = false;
                 }
                 Debug.Log($"{this} is grabbed!");
+            };
+            if (GameManager.Instance.currentGrabbingPoi == this && interactable.Interactors.Count == 0)
+            {
+                GameManager.Instance.OnPoiReleased(this);
+                foreach (var r in render)
+                {
+                    r.enabled = true;
+                }
+                Debug.Log($"{this} is released!");
             };
         }
     }
