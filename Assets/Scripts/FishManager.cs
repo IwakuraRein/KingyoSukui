@@ -31,6 +31,8 @@ namespace Kingyo
         [SerializeField]
         GameObject[] fishPrefabs; // prefab of fish
         Fish[] fishes;
+        private int PoiInWaterCount = 0;
+        private NativeArray<Vector3> PoiPositions;
         private NativeArray<Vector3> FishPositions;
         private NativeArray<Vector3> FishForces;
         private NativeArray<Vector3> FishVelocities;
@@ -62,6 +64,7 @@ namespace Kingyo
             }
             CreateFish(fishSetting.Center, fishSetting.Bounds, fishSetting.OffsetPercentage, fishSetting.MaxFishCount);
             transformAccessArray = new TransformAccessArray(fishes.Length);
+            PoiPositions = new NativeArray<Vector3>(FindObjectsOfType<Poi>().Length, Allocator.Persistent);
             FishPositions = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
             FishForces = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
             FishVelocities = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
@@ -76,6 +79,7 @@ namespace Kingyo
         private void OnDestroy()
         {
             transformAccessArray.Dispose();
+            PoiPositions.Dispose();
             FishPositions.Dispose();
             FishVelocities.Dispose();
             FishForces.Dispose();
@@ -85,6 +89,17 @@ namespace Kingyo
         }
         void FixedUpdate()
         {
+            PoiInWaterCount = 0;
+            Poi[] PoiObjects = FindObjectsOfType<Poi>();
+            for (int i = 0; i < PoiObjects.Length; i++)
+            {
+                if (PoiObjects[i].IsInWater)
+                {
+                    PoiInWaterCount++;
+                    PoiPositions[i] = PoiObjects[i].transform.position;
+                }
+            }
+
             for (int i = 0; i < fishes.Length; i++)
             {
                 FishPositions[i] = fishes[i].transform.position;
@@ -152,6 +167,8 @@ namespace Kingyo
         {
             var job = new FishBehaviorJob
             {
+                poiInWaterCount = PoiInWaterCount,
+                poiPositions = PoiPositions,
                 positions = FishPositions,
                 velocities = FishVelocities,
                 forces = FishForces,
@@ -169,6 +186,10 @@ namespace Kingyo
             };
             JobHandle jobHandle = job.Schedule(transformAccessArray);
             jobHandle.Complete();
+            // for (int i = 0; i < fishes.Length; i++)
+            // {
+            //     Debug.Log("Fish " + i + " force: " + FishForces[i] + ", poi in water count: " + PoiInWaterCount);
+            // }
         }
         void UpdateFishRigidBody()
         {
