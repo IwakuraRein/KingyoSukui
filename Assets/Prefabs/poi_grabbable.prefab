@@ -226,9 +226,6 @@ GameObject:
   - component: {fileID: 4936583487818209641}
   - component: {fileID: 179481764401361624}
   - component: {fileID: 7799521468498249292}
-  - component: {fileID: 6656414345744644018}
-  - component: {fileID: 1826689501735424274}
-  - component: {fileID: 3429312491891810477}
   m_Layer: 7
   m_Name: polySurface3
   m_TagString: poi surface
@@ -301,69 +298,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6656414345744644018
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556166013531057982}
-  m_Material: {fileID: 13400000, guid: 10bde48ef542d6a4fbee12145283824a, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4164511204261677510, guid: f07e5943ee89857418f943979a6ad918, type: 3}
---- !u!114 &1826689501735424274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556166013531057982}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d2301a111f3a543a695cc651464b3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  render: {fileID: 7799521468498249292}
-  threshold: 1
---- !u!54 &3429312491891810477
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556166013531057982}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &2862450342176613272
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +444,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7453560354165847272}
   - component: {fileID: 6865372201015857547}
-  - component: {fileID: 1809513344569758515}
   - component: {fileID: 6726563550387464128}
   - component: {fileID: 9221616939522684472}
   - component: {fileID: 2260407664330088839}
@@ -564,29 +497,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15, y: 0.03, z: 0.22}
   m_Center: {x: 0, y: 0.01, z: 0.09}
---- !u!114 &1809513344569758515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3608815473527128255}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9687a90e01d2d245a95759863c78878, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  render: {fileID: 7799521468498249292}
-  timeGetWet: 1
-  timeGetDry: 3
-  OnFishEnterPoi:
-    _PersistentCalls: []
-  OnFishExitPoi:
-    _PersistentCalls: []
-  OnPoiEnterWater:
-    _PersistentCalls: []
-  OnPoiExitWater:
-    _PersistentCalls: []
 --- !u!54 &6726563550387464128
 Rigidbody:
   m_ObjectHideFlags: 0

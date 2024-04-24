@@ -653,6 +653,67 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &1548027972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1548027974}
+  - component: {fileID: 1548027973}
+  m_Layer: 0
+  m_Name: FishManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1548027973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548027972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a3238d9dacb1149a180abaa016b5ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishPrefabs:
+  - {fileID: 4566545722189806337, guid: 0562610692ce37f4194a26ab891e50e5, type: 3}
+  - {fileID: 6687064165282074955, guid: d0c48fb7bfcbe364b93cfb1b404492f6, type: 3}
+  - {fileID: 8794845505853409006, guid: 62fea831f4998c9458cb7d466e085eb5, type: 3}
+  - {fileID: 5726932057848873516, guid: 1007ca6e100dd034e9e668d6d66b4be6, type: 3}
+  isAIEnabled: 1
+  fishSetting:
+    MaxFishCount: 50
+    PerimeterThresholdPercentage: {x: 0.3, y: 0.2, z: 0.3}
+    WaterDepth: 0.5
+    OffsetPercentage: {x: 0.1, y: 0.35, z: 0.2}
+    avoidanceRadius: 0.05
+    fishAvoidanceWeight: 0.1
+    maxAvoidance: 1
+    boundaryAvoidanceWeight: 1
+    tank: {fileID: 1085688438}
+    speedInBowl: 0.01
+--- !u!4 &1548027974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548027972}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1571080178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,7 +724,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 395141057136355517, guid: a261bfe9db48f604593807fb9ffe7db4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.838
+      value: -0.606
       objectReference: {fileID: 0}
     - target: {fileID: 395141057136355517, guid: a261bfe9db48f604593807fb9ffe7db4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -872,6 +933,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6053910768259866525, guid: 2d9da6a6071858444b27986daad708be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053910768259866525, guid: 2d9da6a6071858444b27986daad708be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053910768259866525, guid: 2d9da6a6071858444b27986daad708be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053910768259866525, guid: 2d9da6a6071858444b27986daad708be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8425084656350580397, guid: 2d9da6a6071858444b27986daad708be, type: 3}
       propertyPath: m_Name
       value: tank
@@ -1013,3 +1090,4 @@ SceneRoots:
   - {fileID: 594887635}
   - {fileID: 1571080178}
   - {fileID: 5192346985235079536}
+  - {fileID: 1548027974}
