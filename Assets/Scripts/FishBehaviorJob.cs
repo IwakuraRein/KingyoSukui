@@ -21,6 +21,7 @@ namespace Kingyo
         public float poiAvoidanceRadius;
         public float avoidanceRadius;
         public float maxAvoidance;
+        public float poiAvoidanceWeight;
         public float boundaryAvoidanceWeight;
         public float fishAvoidanceWeight;
         public float waterDepth;
@@ -40,7 +41,7 @@ namespace Kingyo
 
             Vector3 fishAvoidance = ComputeFishAvoidance(transform.position, index);
 
-            forces[index] = (poiAvoidance + boundaryAvoidance * boundaryAvoidanceWeight + fishAvoidance * fishAvoidanceWeight) / deltaTime;
+            forces[index] = (poiAvoidance * poiAvoidanceWeight + boundaryAvoidance * boundaryAvoidanceWeight + fishAvoidance * fishAvoidanceWeight) / deltaTime;
         }
         private Vector3 ComputePoiAvoidance(Vector3 position)
         {

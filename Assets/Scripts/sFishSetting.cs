@@ -14,6 +14,8 @@ namespace Kingyo
         public Vector3 OffsetPercentage;
         public float avoidanceRadius;
         public float fishAvoidanceWeight;
+        public float poiAvoidanceWeight;
+        public float poiAvoidanceRadius;
         [Tooltip("The maximum magnitude of the avoidance vector. The avoidance vector is the inverse of the distance between the fish and the obstacle. The closer the fish, the stronger the avoidance.")]
         public float maxAvoidance;
         public float boundaryAvoidanceWeight;

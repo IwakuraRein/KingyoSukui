@@ -177,6 +177,8 @@ namespace Kingyo
                 useGravityFlags = useGravityFlags,
                 avoidanceRadius = fishSetting.avoidanceRadius,
                 maxAvoidance = fishSetting.maxAvoidance,
+                poiAvoidanceRadius = fishSetting.poiAvoidanceRadius,
+                poiAvoidanceWeight = fishSetting.poiAvoidanceWeight,
                 boundaryAvoidanceWeight = fishSetting.boundaryAvoidanceWeight,
                 fishAvoidanceWeight = fishSetting.fishAvoidanceWeight,
                 center = center,
@@ -187,10 +189,10 @@ namespace Kingyo
             };
             JobHandle jobHandle = job.Schedule(transformAccessArray);
             jobHandle.Complete();
-            //for (int i = 0; i < fishes.Length; i++)
-            //{
+            // for (int i = 0; i < fishes.Length; i++)
+            // {
             //    Debug.Log("Fish " + i + " force: " + FishForces[i] + ", poi in water count: " + PoiInWaterCount);
-            //}
+            // }
         }
         void UpdateFishRigidBody()
         {
