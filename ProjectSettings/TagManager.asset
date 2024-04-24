@@ -13,6 +13,8 @@ TagManager:
   - Water
   - water
   - SamplesInfoPanel
+  - Left Hand Interactor
+  - Right Hand Interactor
   layers:
   - Default
   - TransparentFX

@@ -10,21 +10,25 @@ namespace Kingyo
     {
         public static GameManager Instance { get; private set; }
         [SerializeField]
-        private GameObject poi;
+        private GameObject leftPoi;
+        [SerializeField]
+        private GameObject rightPoi;
         [SerializeField]
         private GameObject bowl;
         [SerializeField]
         private GameObject player;
         [SerializeField]
         PoiGrabbableProxy[] grabbablePois;
-        public PoiGrabbableProxy currentGrabbingPoi { get; private set; }
+        //public PoiGrabbableProxy currentGrabbingPoi { get; private set; }
+        public PoiGrabbableProxy currentLeftGrabbing { get; private set; }
+        public PoiGrabbableProxy currentRightGrabbing { get; private set; }
 
-        public bool hasPoiOnHand { get; private set; } = false;
+        //public bool hasPoiOnHand { get; private set; } = false;
         //public bool hasBowlOnHand { get; private set; } = false;
         //public bool rightHandOnUse { get; private set; } = false;
         //public bool leftHandOnUse{ get; private set; } = false;
-        //public bool PoiOnLeft { get; private set; } = false;
-        //public bool PoiOnRight { get; private set; } = false;
+        public bool PoiOnLeft { get; private set; } = false;
+        public bool PoiOnRight { get; private set; } = false;
         private void Awake()
         {
             if (Instance == null)
@@ -44,39 +48,50 @@ namespace Kingyo
 
         }
 
-        public void setCurrentPoi(GameObject newPoi)
+        public void onPoiNetBreak(Poi poi)
         {
-            poi = newPoi;
-        }
-
-        public void destroyCurrentPoi()
-        {
-            hasPoiOnHand = false;
-            poi.SetActive(false);
-            //Destroy(poi);
-            //if (PoiOnRight)
+            //if (poi == leftPoi)
             //{
-            //    rightHandOnUse = false;
-            //    PoiOnRight = false;
-            //} else if (PoiOnLeft)
-            //{
-            //    leftHandOnUse = false;
             //    PoiOnLeft = false;
+            //    leftPoi.SetActive(false);
+            //}
+            //if (poi == rightPoi)
+            //{
+            //    PoiOnRight = false;
+            //    rightPoi.SetActive(false);
             //}
         }
-        public void OnPoiGetGrabbed(PoiGrabbableProxy p)
+        public void OnPoiGetGrabbed(PoiGrabbableProxy p, bool isLeft)
         {
-            if (hasPoiOnHand) return;
-            currentGrabbingPoi = p;
-            poi.SetActive(true);
-            hasPoiOnHand = true;
+            if (isLeft && PoiOnLeft) return;
+            if (!isLeft && PoiOnRight) return;
+            if (isLeft)
+            {
+                currentLeftGrabbing = p;
+                leftPoi.SetActive(true);
+                PoiOnLeft = true;
+            }
+            else
+            {
+                currentRightGrabbing = p;
+                rightPoi.SetActive(true);
+                PoiOnRight = true;
+            }
         }
         public void OnPoiReleased(PoiGrabbableProxy p)
         {
-            if (!hasPoiOnHand || currentGrabbingPoi != currentGrabbingPoi) return;
-            currentGrabbingPoi = null;
-            poi.SetActive(false);
-            hasPoiOnHand = false;
+            if (currentRightGrabbing == p)
+            {
+                currentRightGrabbing = null;
+                rightPoi.SetActive(false);
+                PoiOnRight = false;
+            }
+            if (currentLeftGrabbing == p)
+            {
+                currentLeftGrabbing = null;
+                leftPoi.SetActive(false);
+                PoiOnLeft = false;
+            }
         }
 
         // Update is called once per frame
@@ -90,17 +105,17 @@ namespace Kingyo
             // {
             //     poi.SetActive(false);
             // }
-            if (OVRInput.GetDown(OVRInput.Button.Two))
-            {
-                if (poi.activeSelf)
-                {
-                    poi.SetActive(false);
-                }
-                else
-                {
-                    poi.SetActive(true);
-                }
-            }
+            //if (OVRInput.GetDown(OVRInput.Button.Two))
+            //{
+            //    if (poi.activeSelf)
+            //    {
+            //        poi.SetActive(false);
+            //    }
+            //    else
+            //    {
+            //        poi.SetActive(true);
+            //    }
+            //}
         }
     }
 }

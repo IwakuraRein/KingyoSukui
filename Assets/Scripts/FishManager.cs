@@ -96,8 +96,7 @@ namespace Kingyo
             {
                 if (PoiObjects[i].IsInWater)
                 {
-                    PoiInWaterCount++;
-                    PoiPositions[i] = PoiObjects[i].transform.position;
+                    PoiPositions[PoiInWaterCount++] = PoiObjects[i].transform.position;
                 }
             }
 

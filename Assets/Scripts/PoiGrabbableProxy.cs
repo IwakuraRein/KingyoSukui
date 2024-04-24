@@ -1,3 +1,4 @@
+using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,30 +9,91 @@ namespace Kingyo
     public class PoiGrabbableProxy : MonoBehaviour
     {
         [SerializeField]
-        HandGrabInteractable interactable;
+        HandGrabInteractable rightInteractable;
+        [SerializeField]
+        HandGrabInteractable leftInteractable;
         [SerializeField]
         Renderer[] render;
         public bool IsGrabbing { get; private set; }
-        public void Update()
+        public void FixedUpdate()
         {
-            if (!GameManager.Instance.hasPoiOnHand && interactable.Interactors.Count != 0)
+            foreach (var interactor in rightInteractable.Interactors)
             {
-                GameManager.Instance.OnPoiGetGrabbed(this);
-                foreach (var r in render)
+                if (interactor.IsGrabbing)
                 {
-                    r.enabled = false;
+                    if (
+                    interactor.Hand.Handedness == Oculus.Interaction.Input.Handedness.Right && !GameManager.Instance.PoiOnRight)
+                    {
+                        GameManager.Instance.OnPoiGetGrabbed(this, false);
+                        foreach (var r in render)
+                        {
+                            r.enabled = false;
+                        }
+                        Debug.Log($"{this} is grabbed by right hand {interactor.Hand}!");
+                    }
                 }
-                Debug.Log($"{this} is grabbed!");
-            };
-            if (GameManager.Instance.currentGrabbingPoi == this && interactable.Interactors.Count == 0)
+            }
+            foreach (var interactor in leftInteractable.Interactors)
             {
-                GameManager.Instance.OnPoiReleased(this);
-                foreach (var r in render)
+                if (interactor.IsGrabbing)
                 {
-                    r.enabled = true;
+                    if (
+                    interactor.Hand.Handedness == Oculus.Interaction.Input.Handedness.Left && !GameManager.Instance.PoiOnLeft)
+                    {
+                        GameManager.Instance.OnPoiGetGrabbed(this, true);
+                        foreach (var r in render)
+                        {
+                            r.enabled = false;
+                        }
+                        Debug.Log($"{this} is grabbed by left hand {interactor.Hand}!");
+                    }
                 }
-                Debug.Log($"{this} is released!");
-            };
+            }
+
+
+
+            if (GameManager.Instance.currentRightGrabbing == this)
+            {
+                bool isGrabbing = false;
+                foreach (var interactor in rightInteractable.Interactors)
+                {
+                    if (interactor.IsGrabbing)
+                    {
+                        isGrabbing = true;
+                        break;
+                    }
+                }
+                if (!isGrabbing)
+                {
+                    GameManager.Instance.OnPoiReleased(this);
+                    foreach (var r in render)
+                    {
+                        r.enabled = true;
+                    }
+                    Debug.Log($"{this} is released!");
+                }
+            }
+            if (GameManager.Instance.currentLeftGrabbing == this)
+            {
+                bool isGrabbing = false;
+                foreach (var interactor in leftInteractable.Interactors)
+                {
+                    if (interactor.IsGrabbing)
+                    {
+                        isGrabbing = true;
+                        break;
+                    }
+                }
+                if (!isGrabbing)
+                {
+                    GameManager.Instance.OnPoiReleased(this);
+                    foreach (var r in render)
+                    {
+                        r.enabled = true;
+                    }
+                    Debug.Log($"{this} is released!");
+                }
+            }
         }
     }
 }

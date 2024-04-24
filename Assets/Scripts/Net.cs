@@ -9,6 +9,8 @@ namespace Kingyo
     {
         [SerializeField]
         Renderer render;
+        [SerializeField]
+        Poi poi;
         public float threshold = 0.1f;
 
         private void Start()
@@ -39,7 +41,7 @@ namespace Kingyo
             //StartCoroutine(destroyParent(3f));
             //GameObject.Destroy(this.gameObject);
             render.enabled = false;
-            GameManager.Instance.destroyCurrentPoi();
+            GameManager.Instance.onPoiNetBreak(poi);
         }
 
         IEnumerator destroyParent(float time)
