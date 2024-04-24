@@ -1843,10 +1843,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9031376956914587091, guid: a261bfe9db48f604593807fb9ffe7db4, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 10bde48ef542d6a4fbee12145283824a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2842,13 +2838,13 @@ MonoBehaviour:
   - {fileID: 1960743167}
   isAIEnabled: 1
   fishSetting:
-    MaxFishCount: 50
+    MaxFishCount: 20
     PerimeterThresholdPercentage: {x: 0.3, y: 0.2, z: 0.3}
     WaterDepth: 0.25
     OffsetPercentage: {x: 0.1, y: 0.35, z: 0.2}
     avoidanceRadius: 0.05
     fishAvoidanceWeight: 0.1
-    poiAvoidanceWeight: 0.1
+    poiAvoidanceWeight: 0.5
     poiAvoidanceRadius: 0.3
     maxAvoidance: 2
     boundaryAvoidanceWeight: 0.001
