@@ -8,10 +8,10 @@ namespace Kingyo
     {
         [ReadOnly]
         public NativeArray<Vector3> velocities;
-        public NativeArray<bool> isFishInPoi;
+        public NativeArray<FishAttribute> fishAttributes;
         public void Execute(int index, TransformAccess transform)
         {
-            if (isFishInPoi[index])
+            if (fishAttributes[index].isFishInBowl)
             {
                 return;
             }

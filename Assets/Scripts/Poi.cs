@@ -91,9 +91,9 @@ namespace Kingyo
                 var fish = other.attachedRigidbody.gameObject.GetComponent<Fish>();
                 if (fish != null)
                 {
-                    if (!fish.IsInPoi)
+                    if (!fish.fishAttr.isInPoi)
                     {
-                        fish.IsInPoi = true;
+                        fish.fishAttr.isInPoi = true;
                         OnFishEnterPoi?.Invoke(this, fish);
                         Debug.Log($"{fish} is on the poi!");
                     }
@@ -116,9 +116,9 @@ namespace Kingyo
                 var fish = other.attachedRigidbody.gameObject.GetComponent<Fish>();
                 if (fish != null)
                 {
-                    if (fish.IsInPoi)
+                    if (fish.fishAttr.isInPoi)
                     {
-                        fish.IsInPoi = false;
+                        fish.fishAttr.isInPoi = false;
                         OnFishExitPoi?.Invoke(this, fish);
                         Debug.Log($"{fish} leaves the poi!");
                     }

@@ -19,14 +19,14 @@ namespace Kingyo
                 var fish = other.attachedRigidbody.gameObject.GetComponent<Fish>();
                 if (fish != null)
                 {
-                    if (!fish.IsInBowl)
+                    if (!fish.fishAttr.isInBowl)
                     {
-                        fish.IsInBowl = true;
+                        fish.fishAttr.isInBowl = true;
                         OnFishEnterBowl?.Invoke(this, fish);
                         Debug.Log($"{fish} is in the bowl!");
                         fishesInBowl.Add(fish);
                         // get its parent fish component and add its score to the total
-                        scoreTotal += fish.score;
+                        scoreTotal += fish.fishAttr.score;
                     }
                 }
             } 
@@ -39,14 +39,14 @@ namespace Kingyo
                 var fish = other.attachedRigidbody.gameObject.GetComponent<Fish>();
                 if (fish != null)
                 {
-                    if (fish.IsInBowl)
+                    if (fish.fishAttr.isInBowl)
                     {
-                        fish.IsInBowl = false;
+                        fish.fishAttr.isInBowl = false;
                         OnFishExitBowl?.Invoke(this, fish);
                         Debug.Log($"{fish} leaves the bowl!");
                         fishesInBowl.Remove(fish);
                         // get its parent fish component and add its score to the total
-                        scoreTotal -= fish.score;
+                        scoreTotal -= fish.fishAttr.score;
                     }
                 }
             }

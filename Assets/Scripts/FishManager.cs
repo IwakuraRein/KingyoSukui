@@ -38,9 +38,7 @@ namespace Kingyo
         private NativeArray<Vector3> FishPositions;
         private NativeArray<Vector3> FishForces;
         private NativeArray<Vector3> FishVelocities;
-        private NativeArray<bool> IsFishInBowl;
-        private NativeArray<bool> IsFishInPoi;
-        private NativeArray<bool> useGravityFlags;
+        private NativeArray<FishAttribute> FishAttributes;
         private TransformAccessArray transformAccessArray;
         [SerializeField]
         [Tooltip("Enable AI for fish. If false, fish will not move. AI is disabled for debugging.")]
@@ -70,13 +68,15 @@ namespace Kingyo
             FishPositions = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
             FishForces = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
             FishVelocities = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
-            IsFishInBowl = new NativeArray<bool>(fishes.Length, Allocator.Persistent);
-            IsFishInPoi = new NativeArray<bool>(fishes.Length, Allocator.Persistent);
+            FishAttributes = new NativeArray<FishAttribute>(fishes.Length, Allocator.Persistent);
+            for (int i = 0; i < fishes.Length; i++)
+            {
+                FishAttributes[i] = fishes[i].fishAttr;
+            }
             for (int i = 0; i < fishes.Length; i++)
             {
                 transformAccessArray.Add(fishes[i].transform);
             }
-            useGravityFlags = new NativeArray<bool>(fishes.Length, Allocator.Persistent);
         }
         private void OnDestroy()
         {
@@ -85,9 +85,7 @@ namespace Kingyo
             FishPositions.Dispose();
             FishVelocities.Dispose();
             FishForces.Dispose();
-            useGravityFlags.Dispose();
-            IsFishInBowl.Dispose();
-            IsFishInPoi.Dispose();
+            FishAttributes.Dispose();
         }
         void FixedUpdate()
         {
@@ -133,7 +131,7 @@ namespace Kingyo
                 fish.transform.forward = direction;
                 if (isAIEnabled)
                 {
-                    Vector3 velocity = direction * Random.Range(0, fish.GetComponent<Fish>().maxSpeed);
+                    Vector3 velocity = direction * Random.Range(0, fish.GetComponent<Fish>().fishAttr.maxSpeed);
                     fish.GetComponent<Rigidbody>().velocity = velocity;
                 }
                 fishes[i] = fish.GetComponent<Fish>();
@@ -146,7 +144,7 @@ namespace Kingyo
                 center = center,
                 extents = extents,
                 positions = FishPositions,
-                useGravityFlags = useGravityFlags,
+                fishAttributes = FishAttributes,
                 waterDepth = fishSetting.WaterDepth
             };
 
@@ -158,7 +156,7 @@ namespace Kingyo
             var job = new UpdateFishRotation
             {
                 velocities = FishVelocities,
-                isFishInPoi = IsFishInPoi
+                fishAttributes = FishAttributes
             };
             JobHandle jobHandle = job.Schedule(transformAccessArray);
             jobHandle.Complete();
@@ -169,20 +167,12 @@ namespace Kingyo
             {
                 poiInWaterCount = PoiInWaterCount,
                 poiPositions = PoiPositions,
+                fishAttributes = FishAttributes,
                 positions = FishPositions,
                 velocities = FishVelocities,
                 forces = FishForces,
-                isFishInBowl = IsFishInBowl,
-                useGravityFlags = useGravityFlags,
-                avoidanceRadius = fishSetting.avoidanceRadius,
-                maxAvoidance = fishSetting.maxAvoidance,
-                poiAvoidanceRadius = fishSetting.poiAvoidanceRadius,
-                poiAvoidanceWeight = fishSetting.poiAvoidanceWeight,
-                boundaryAvoidanceWeight = fishSetting.boundaryAvoidanceWeight,
-                fishAvoidanceWeight = fishSetting.fishAvoidanceWeight,
                 center = center,
                 extents = extents,
-                perimeterThresholdPercentage = fishSetting.PerimeterThresholdPercentage,
                 waterDepth = fishSetting.WaterDepth,
                 deltaTime = Time.deltaTime
             };
@@ -198,10 +188,11 @@ namespace Kingyo
             for (int i = 0; i < fishes.Length; i++)
             {
                 var fishRigidbody = fishes[i].GetComponent<Rigidbody>();
-                fishRigidbody.useGravity = useGravityFlags[i];
-                if (fishes[i].IsInBowl)
+                FishAttribute fishAttr = FishAttributes[i];
+                fishRigidbody.useGravity = fishAttr.useGravity;
+                if (fishes[i].fishAttr.isInBowl)
                 {
-                    IsFishInBowl[i] = true;
+                    fishAttr.isFishInBowl = true;
                     fishRigidbody.useGravity = false;
                     if (fishRigidbody.velocity.magnitude > fishSetting.speedInBowl)
                         fishRigidbody.velocity *= 0.5f;
@@ -210,28 +201,29 @@ namespace Kingyo
                 }
                 else if (fishRigidbody.useGravity)
                 {
-                    IsFishInBowl[i] = false;
+                    fishAttr.isFishInBowl = false;
                     fishRigidbody.angularVelocity = Vector3.zero;
                 }
                 else // fish is in water
                 {
-                    IsFishInBowl[i] = false;
+                    fishAttr.isFishInBowl = false;
                     Vector3 vel = fishRigidbody.velocity;
                     vel.y *= 0.8f;
                     Vector3 force = FishForces[i];
                     fishRigidbody.AddForce(force);
-                    if (vel.magnitude > fishes[i].maxSpeed)
-                        fishRigidbody.velocity = vel.normalized * fishes[i].maxSpeed;
+                    if (vel.magnitude > fishes[i].fishAttr.maxSpeed)
+                        fishRigidbody.velocity = vel.normalized * fishes[i].fishAttr.maxSpeed;
                     else
                         fishRigidbody.velocity = vel;
                     if (vel.magnitude < 1e-2f)
                     {
                         Vector3 direction = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
-                        fishRigidbody.AddForce(direction * Random.Range(0, fishes[i].maxSpeed) / Time.fixedDeltaTime);
+                        fishRigidbody.AddForce(direction * Random.Range(0, fishes[i].fishAttr.maxSpeed) / Time.fixedDeltaTime);
                     }
                     UpdateFishRotation();
                 }
-                IsFishInPoi[i] = fishes[i].IsInPoi;
+                fishAttr.isInPoi = fishes[i].fishAttr.isInPoi;
+                FishAttributes[i] = fishAttr;
             }
         }
         void UpdateFishRigidBodyWOAI()
@@ -239,20 +231,22 @@ namespace Kingyo
             for (int i = 0; i < fishes.Length; i++)
             {
                 var fishRigidbody = fishes[i].GetComponent<Rigidbody>();
-                fishRigidbody.useGravity = useGravityFlags[i];
+                FishAttribute fishAttr = FishAttributes[i];
+                fishRigidbody.useGravity = fishAttr.useGravity;
                 fishRigidbody.velocity = new Vector3(0, 0, 0);
                 fishRigidbody.angularVelocity = new Vector3(0, 0, 0);
-                if (fishes[i].IsInBowl)
+                if (fishes[i].fishAttr.isInBowl)
                 {
-                    IsFishInBowl[i] = true;
+                    fishAttr.isFishInBowl = true;
                     fishRigidbody.useGravity = false;
                     if (fishRigidbody.velocity.magnitude > fishSetting.speedInBowl)
-                        fishRigidbody.velocity *= 0.8f;
+                        fishRigidbody.velocity *= 0.5f;
                     fishRigidbody.angularVelocity *= 0.5f;
+                    UpdateFishRotation();
                 }
                 else if (fishRigidbody.useGravity)
                 {
-                    IsFishInBowl[i] = false;
+                    fishAttr.isFishInBowl = false;
                     fishRigidbody.angularVelocity = Vector3.zero;
                 }
                 else

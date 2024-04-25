@@ -2308,8 +2308,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2243915318bbd4428b7149d13a48e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0.1
-  score: 2
+  fishAttr:
+    isFishInBowl: 0
+    useGravity: 0
+    poiAvoidanceRadius: 0.3
+    avoidanceRadius: 0.05
+    maxAvoidance: 2
+    poiAvoidanceWeight: 0.1
+    boundaryAvoidanceWeight: 0.001
+    fishAvoidanceWeight: 0.1
+    maxSpeed: 0.05
+    score: 1
+    isInPoi: 0
+    isInBowl: 0
+    perimeterThresholdPercentage: {x: 0.3, y: 0.2, z: 0.3}
 --- !u!111 &2244345827479049079
 Animation:
   m_ObjectHideFlags: 0

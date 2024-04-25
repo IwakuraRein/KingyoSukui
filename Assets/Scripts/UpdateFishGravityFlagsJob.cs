@@ -12,11 +12,13 @@ namespace Kingyo
         public Bounds extents;
         public float waterDepth;
         public NativeArray<Vector3> positions;
-        public NativeArray<bool> useGravityFlags;
+        public NativeArray<FishAttribute> fishAttributes;
 
         public void Execute(int index)
         {
-            useGravityFlags[index] = !MyUtility.IsUnderWater(positions[index], center, extents, waterDepth, new Vector3(0, 0, 0));
+            FishAttribute fishAttr = fishAttributes[index];
+            fishAttr.useGravity = !MyUtility.IsUnderWater(positions[index], center, extents, waterDepth, new Vector3(0, 0, 0));
+            fishAttributes[index] = fishAttr;
         }
     }
 }
