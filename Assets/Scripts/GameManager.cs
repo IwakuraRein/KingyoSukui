@@ -116,6 +116,44 @@ namespace Kingyo
             //        poi.SetActive(true);
             //    }
             //}
+
+            if (currentLeftGrabbing != null && leftPoi.activeSelf)
+            {
+                // Use left hand's joystick to adjust the rotation of the poi
+                Vector2 joystick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch);
+                if (joystick.x != 0) {
+                    float rotationSpeed = 10f;
+                    float rotationAmount = joystick.x * rotationSpeed * Time.deltaTime;
+
+                    // Get the current orientation of the controller
+                    Quaternion controllerOrientation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
+
+                    // Convert joystick input into a world rotation
+                    Vector3 rotationAxis = new Vector3(joystick.y, -joystick.x, 0); // Inverting x for intuitive horizontal rotation
+                    rotationAxis = controllerOrientation * rotationAxis; // Transforming the axis to align with controller orientation
+
+                    leftPoi.transform.Rotate(rotationAxis, rotationAmount, Space.World);
+                }
+            }
+            if (currentRightGrabbing != null && rightPoi.activeSelf)
+            {
+                // Use left hand's joystick to adjust the rotation of the poi
+                Vector2 joystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick, OVRInput.Controller.RTouch);
+                if (joystick.x != 0) {
+                    Debug.Log(joystick);
+                    float rotationSpeed = 10f;
+                    float rotationAmount = joystick.x * rotationSpeed * Time.deltaTime;
+
+                    // Get the current orientation of the controller
+                    Quaternion controllerOrientation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
+
+                    // Convert joystick input into a world rotation
+                    Vector3 rotationAxis = new Vector3(joystick.y, -joystick.x, 0); // Inverting x for intuitive horizontal rotation
+                    rotationAxis = controllerOrientation * rotationAxis; // Transforming the axis to align with controller orientation
+
+                    rightPoi.transform.Rotate(rotationAxis, rotationAmount, Space.World);
+                }
+            }
         }
     }
 }

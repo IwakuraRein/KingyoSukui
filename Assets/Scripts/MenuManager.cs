@@ -28,4 +28,30 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            if (OVRInput.GetDown(OVRInput.Button.Three))
+            {
+                switchLevel(1);
+            }
+            else if (OVRInput.GetDown(OVRInput.Button.Four))
+            {
+                switchLevel(2);
+            }
+            else if (OVRInput.GetDown(OVRInput.Button.Two))
+            {
+                quitGame();
+            }
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            if (OVRInput.GetDown(OVRInput.Button.Two))
+            {
+                ReturnToMenu();
+            }
+        }
+    }
 }
