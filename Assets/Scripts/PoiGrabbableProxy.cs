@@ -13,7 +13,8 @@ namespace Kingyo
         [SerializeField]
         HandGrabInteractable leftInteractable;
         [SerializeField]
-        Renderer[] render;
+        Renderer[] renders;
+        public Net net;
         public bool IsGrabbing { get; private set; }
         public void FixedUpdate()
         {
@@ -25,7 +26,7 @@ namespace Kingyo
                     interactor.Hand.Handedness == Oculus.Interaction.Input.Handedness.Right && !GameManager.Instance.PoiOnRight)
                     {
                         GameManager.Instance.OnPoiGetGrabbed(this, false);
-                        foreach (var r in render)
+                        foreach (var r in renders)
                         {
                             r.enabled = false;
                         }
@@ -41,7 +42,7 @@ namespace Kingyo
                     interactor.Hand.Handedness == Oculus.Interaction.Input.Handedness.Left && !GameManager.Instance.PoiOnLeft)
                     {
                         GameManager.Instance.OnPoiGetGrabbed(this, true);
-                        foreach (var r in render)
+                        foreach (var r in renders)
                         {
                             r.enabled = false;
                         }
@@ -66,7 +67,7 @@ namespace Kingyo
                 if (!isGrabbing)
                 {
                     GameManager.Instance.OnPoiReleased(this);
-                    foreach (var r in render)
+                    foreach (var r in renders)
                     {
                         r.enabled = true;
                     }
@@ -87,7 +88,7 @@ namespace Kingyo
                 if (!isGrabbing)
                 {
                     GameManager.Instance.OnPoiReleased(this);
-                    foreach (var r in render)
+                    foreach (var r in renders)
                     {
                         r.enabled = true;
                     }

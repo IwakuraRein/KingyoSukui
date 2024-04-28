@@ -13,6 +13,10 @@ namespace Kingyo
         float timeGetWet = 1f;
         [SerializeField]
         float timeGetDry = 3f;
+        [SerializeField]
+        Net net;
+
+        public PoiGrabbableProxy proxy;
 
         bool isInWater = false;
         Material mat;
@@ -36,6 +40,10 @@ namespace Kingyo
                 StopAllCoroutines();
                 StartCoroutine(GetDry());
             };
+        }
+        private void OnEnable()
+        {
+            net.EnableNet();
         }
         IEnumerator GetWet()
         {

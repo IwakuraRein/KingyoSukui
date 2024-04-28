@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 3
+  m_CurrentQuality: 1
   m_QualitySettings:
   - serializedVersion: 3
     name: Very Low
@@ -56,6 +56,8 @@ QualitySettings:
     terrainMaxTrees: 50
     excludedTargetPlatforms:
     - Android
+    - Standalone
+    - Server
   - serializedVersion: 3
     name: Low
     pixelLightCount: 0
@@ -154,6 +156,8 @@ QualitySettings:
     terrainFadeLength: 5
     terrainMaxTrees: 50
     excludedTargetPlatforms:
+    - Standalone
+    - Server
     - Android
   - serializedVersion: 3
     name: High
@@ -205,6 +209,8 @@ QualitySettings:
     terrainMaxTrees: 50
     excludedTargetPlatforms:
     - Android
+    - Standalone
+    - Server
   - serializedVersion: 3
     name: Very High
     pixelLightCount: 3
@@ -255,6 +261,8 @@ QualitySettings:
     terrainMaxTrees: 50
     excludedTargetPlatforms:
     - Android
+    - Server
+    - Standalone
   - serializedVersion: 3
     name: Ultra
     pixelLightCount: 4
@@ -305,6 +313,8 @@ QualitySettings:
     terrainMaxTrees: 50
     excludedTargetPlatforms:
     - Android
+    - Server
+    - Standalone
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 1

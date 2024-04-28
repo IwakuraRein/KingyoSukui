@@ -11,6 +11,8 @@ namespace Kingyo
         Renderer render;
         [SerializeField]
         Poi poi;
+        [SerializeField]
+        Collider[] colliders;
         public float threshold = 0.1f;
 
         private void Start()
@@ -24,24 +26,32 @@ namespace Kingyo
                 Debug.DrawRay(contact.point, contact.normal * 10, Color.red);
                 if (collision.relativeVelocity.magnitude > threshold || collision.impulse.magnitude > threshold)
                 {
-                    BreakNet(contact.point);
+                    BreakNet();
                 }
             }
         }
 
         // Update is called once per frame
-        void Update()
+        public void EnableNet()
         {
-
+            render.enabled = true;
+            foreach (var collider in colliders)
+            {
+                collider.enabled = true;
+            }
         }
 
-        public void BreakNet(Vector3 point)
+        public void BreakNet()
         {
             Debug.Log("Break Net");
             //StartCoroutine(destroyParent(3f));
             //GameObject.Destroy(this.gameObject);
             render.enabled = false;
-            GameManager.Instance.onPoiNetBreak(poi);
+            foreach(var collider in colliders)
+            {
+                collider.enabled = false;
+            }
+            if (poi) GameManager.Instance.onPoiNetBreak(poi);
         }
 
         IEnumerator destroyParent(float time)

@@ -10,9 +10,9 @@ namespace Kingyo
     {
         public static GameManager Instance { get; private set; }
         [SerializeField]
-        private GameObject leftPoi;
+        private Poi leftPoi;
         [SerializeField]
-        private GameObject rightPoi;
+        private Poi rightPoi;
         [SerializeField]
         private GameObject bowl;
         [SerializeField]
@@ -50,6 +50,7 @@ namespace Kingyo
 
         public void onPoiNetBreak(Poi poi)
         {
+            poi.proxy?.net.BreakNet();
             //if (poi == leftPoi)
             //{
             //    PoiOnLeft = false;
@@ -68,13 +69,15 @@ namespace Kingyo
             if (isLeft)
             {
                 currentLeftGrabbing = p;
-                leftPoi.SetActive(true);
+                leftPoi.gameObject.SetActive(true);
+                leftPoi.proxy = p;
                 PoiOnLeft = true;
             }
             else
             {
                 currentRightGrabbing = p;
-                rightPoi.SetActive(true);
+                rightPoi.gameObject.SetActive(true);
+                rightPoi.proxy = p;
                 PoiOnRight = true;
             }
         }
@@ -83,13 +86,15 @@ namespace Kingyo
             if (currentRightGrabbing == p)
             {
                 currentRightGrabbing = null;
-                rightPoi.SetActive(false);
+                rightPoi.gameObject.SetActive(false);
+                rightPoi.proxy = null;
                 PoiOnRight = false;
             }
             if (currentLeftGrabbing == p)
             {
                 currentLeftGrabbing = null;
-                leftPoi.SetActive(false);
+                leftPoi.gameObject.SetActive(false);
+                leftPoi.proxy = null;
                 PoiOnLeft = false;
             }
         }
@@ -117,7 +122,7 @@ namespace Kingyo
             //    }
             //}
 
-            if (currentLeftGrabbing != null && leftPoi.activeSelf)
+            if (currentLeftGrabbing != null && leftPoi.gameObject.activeSelf)
             {
                 // Use left hand's joystick to adjust the rotation of the poi
                 Vector2 joystick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch);
@@ -135,7 +140,7 @@ namespace Kingyo
                     leftPoi.transform.Rotate(rotationAxis, rotationAmount, Space.World);
                 }
             }
-            if (currentRightGrabbing != null && rightPoi.activeSelf)
+            if (currentRightGrabbing != null && rightPoi.gameObject.activeSelf)
             {
                 // Use left hand's joystick to adjust the rotation of the poi
                 Vector2 joystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick, OVRInput.Controller.RTouch);
