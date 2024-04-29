@@ -15,6 +15,10 @@ namespace Kingyo
         float timeGetDry = 3f;
         [SerializeField]
         Net net;
+        [SerializeField]
+        AudioSource audioSource;
+        [SerializeField]
+        AudioClip waterAudio;
 
         public PoiGrabbableProxy proxy;
 
@@ -34,16 +38,36 @@ namespace Kingyo
             {
                 StopAllCoroutines();
                 StartCoroutine(GetWet());
+                audioSource.PlayOneShot(waterAudio);
+                Logger.Log($"Poi {this} enters water!");
             };
             OnPoiExitWater += (Poi _) =>
             {
                 StopAllCoroutines();
                 StartCoroutine(GetDry());
+                Logger.Log($"Poi {this} leaves water!");
+            };
+            OnFishEnterPoi += (Poi p, Fish f) =>
+            {
+                f.rb.velocity = Vector3.zero;
+                f.rb.angularVelocity = Vector3.zero;
+                f.rb.constraints = RigidbodyConstraints.FreezeRotation;
+                f.rb.useGravity = true;
+                Logger.Log($"Fish {f} is on the poi!");
+            };
+            OnFishExitPoi += (Poi p, Fish f) =>
+            {
+                f.rb.velocity = Vector3.zero;
+                f.rb.angularVelocity = Vector3.zero;
+                f.rb.constraints = RigidbodyConstraints.None;
+                //if (!f.IsUnderWater) f.rb.useGravity = true;
+                Logger.Log($"Fish {f} leaves the poi!");
             };
         }
         private void OnEnable()
         {
-            net.EnableNet();
+            if (proxy && proxy.isBroken) net.BreakNet();
+            else net.EnableNet();
         }
         IEnumerator GetWet()
         {

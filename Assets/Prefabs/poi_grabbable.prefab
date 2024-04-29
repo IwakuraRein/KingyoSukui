@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 179481764401361624}
   - component: {fileID: 7799521468498249292}
   - component: {fileID: 5176322461022235289}
-  - component: {fileID: 4565424688056711951}
   m_Layer: 7
   m_Name: polySurface3
   m_TagString: poi surface
@@ -243,23 +242,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4164511204261677510, guid: f07e5943ee89857418f943979a6ad918, type: 3}
---- !u!114 &4565424688056711951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556166013531057982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d2301a111f3a543a695cc651464b3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  render: {fileID: 7799521468498249292}
-  poi: {fileID: 0}
-  colliders:
-  - {fileID: 5176322461022235289}
-  threshold: 999
 --- !u!1 &2862450342176613272
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +518,7 @@ MonoBehaviour:
   - {fileID: 8463062486964505186}
   - {fileID: 6311634193654258823}
   - {fileID: 7799521468498249292}
-  net: {fileID: 4565424688056711951}
+  poiSurface: {fileID: 2556166013531057982}
 --- !u!114 &3996768341506944850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,7 +600,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6946346709792231093, guid: f07e5943ee89857418f943979a6ad918, type: 3}
+  - {fileID: 2100000, guid: b3d8d79dbb7eacf4a8f7b401800a8375, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -939,7 +921,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6946346709792231093, guid: f07e5943ee89857418f943979a6ad918, type: 3}
+  - {fileID: 2100000, guid: b3d8d79dbb7eacf4a8f7b401800a8375, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

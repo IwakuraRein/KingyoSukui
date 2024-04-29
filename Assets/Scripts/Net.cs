@@ -27,6 +27,7 @@ namespace Kingyo
                 if (collision.relativeVelocity.magnitude > threshold || collision.impulse.magnitude > threshold)
                 {
                     BreakNet();
+                    if (poi) GameManager.Instance.onPoiNetBreak(poi);
                 }
             }
         }
@@ -51,7 +52,6 @@ namespace Kingyo
             {
                 collider.enabled = false;
             }
-            if (poi) GameManager.Instance.onPoiNetBreak(poi);
         }
 
         IEnumerator destroyParent(float time)

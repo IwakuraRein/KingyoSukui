@@ -101,7 +101,7 @@ namespace Kingyo
             for (int i = 0; i < fishes.Length; i++)
             {
                 FishPositions[i] = fishes[i].transform.position;
-                FishVelocities[i] = fishes[i].GetComponent<Rigidbody>().velocity;
+                FishVelocities[i] = fishes[i].rb.velocity;
             }
             UpdateFishUseGravity(fishSetting.Center, fishSetting.Bounds);
             if (isAIEnabled)
@@ -132,7 +132,7 @@ namespace Kingyo
                 if (isAIEnabled)
                 {
                     Vector3 velocity = direction * Random.Range(0, fish.GetComponent<Fish>().fishAttr.maxSpeed);
-                    fish.GetComponent<Rigidbody>().velocity = velocity;
+                    fish.GetComponent<Fish>().rb.velocity = velocity;
                 }
                 fishes[i] = fish.GetComponent<Fish>();
             }
@@ -183,44 +183,73 @@ namespace Kingyo
             //    Debug.Log("Fish " + i + " force: " + FishForces[i] + ", poi in water count: " + PoiInWaterCount);
             // }
         }
+
         void UpdateFishRigidBody()
         {
             for (int i = 0; i < fishes.Length; i++)
             {
-                var fishRigidbody = fishes[i].GetComponent<Rigidbody>();
+                var fishRigidbody = fishes[i].rb;
                 FishAttribute fishAttr = FishAttributes[i];
-                fishRigidbody.useGravity = fishAttr.useGravity;
-                if (fishes[i].fishAttr.isInBowl)
+                if (fishes[i].fishAttr.isInPoi)
                 {
-                    fishAttr.isFishInBowl = true;
-                    fishRigidbody.useGravity = false;
-                    if (fishRigidbody.velocity.magnitude > fishSetting.speedInBowl)
-                        fishRigidbody.velocity *= 0.5f;
-                    fishRigidbody.angularVelocity *= 0.5f;
-                    UpdateFishRotation();
+                    //fishRigidbody.useGravity = fishAttr.useGravity;
+                    //fishRigidbody.velocity = new Vector3(0, 0, 0);
+                    //fishRigidbody.angularVelocity = new Vector3(0, 0, 0);
+                    //if (fishes[i].fishAttr.isInBowl)
+                    //{
+                    //    fishAttr.isFishInBowl = true;
+                    //    fishRigidbody.useGravity = false;
+                    //    if (fishRigidbody.velocity.magnitude > fishSetting.speedInBowl)
+                    //        fishRigidbody.velocity *= 0.5f;
+                    //    fishRigidbody.angularVelocity *= 0.5f;
+                    //    UpdateFishRotation();
+                    //}
+                    //else if (fishRigidbody.useGravity)
+                    //{
+                    //    fishAttr.isFishInBowl = false;
+                    //    fishRigidbody.angularVelocity = Vector3.zero;
+                    //}
+                    //else
+                    //{
+                    //    fishRigidbody.velocity *= 0.1f;
+                    //    fishRigidbody.angularVelocity = Vector3.zero;
+                    //}
                 }
-                else if (fishRigidbody.useGravity)
+                else
                 {
-                    fishAttr.isFishInBowl = false;
-                    fishRigidbody.angularVelocity = Vector3.zero;
-                }
-                else // fish is in water
-                {
-                    fishAttr.isFishInBowl = false;
-                    Vector3 vel = fishRigidbody.velocity;
-                    vel.y *= 0.8f;
-                    Vector3 force = FishForces[i];
-                    fishRigidbody.AddForce(force);
-                    if (vel.magnitude > fishes[i].fishAttr.maxSpeed)
-                        fishRigidbody.velocity = vel.normalized * fishes[i].fishAttr.maxSpeed;
-                    else
-                        fishRigidbody.velocity = vel;
-                    if (vel.magnitude < 1e-2f)
+                    fishRigidbody.useGravity = fishAttr.useGravity;
+                    if (fishes[i].fishAttr.isInBowl)
                     {
-                        Vector3 direction = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
-                        fishRigidbody.AddForce(direction * Random.Range(0, fishes[i].fishAttr.maxSpeed) / Time.fixedDeltaTime);
+                        fishAttr.isFishInBowl = true;
+                        fishRigidbody.useGravity = false;
+                        if (fishRigidbody.velocity.magnitude > fishSetting.speedInBowl)
+                            fishRigidbody.velocity *= 0.5f;
+                        fishRigidbody.angularVelocity *= 0.5f;
+                        UpdateFishRotation();
                     }
-                    UpdateFishRotation();
+                    else if (fishRigidbody.useGravity)
+                    {
+                        fishAttr.isFishInBowl = false;
+                        fishRigidbody.angularVelocity = Vector3.zero;
+                    }
+                    else // fish is in water
+                    {
+                        fishAttr.isFishInBowl = false;
+                        Vector3 vel = fishRigidbody.velocity;
+                        vel.y *= 0.8f;
+                        Vector3 force = FishForces[i];
+                        fishRigidbody.AddForce(force);
+                        if (vel.magnitude > fishes[i].fishAttr.maxSpeed)
+                            fishRigidbody.velocity = vel.normalized * fishes[i].fishAttr.maxSpeed;
+                        else
+                            fishRigidbody.velocity = vel;
+                        if (vel.magnitude < 1e-2f)
+                        {
+                            Vector3 direction = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+                            fishRigidbody.AddForce(direction * Random.Range(0, fishes[i].fishAttr.maxSpeed) / Time.fixedDeltaTime);
+                        }
+                        UpdateFishRotation();
+                    }
                 }
                 fishAttr.isInPoi = fishes[i].fishAttr.isInPoi;
                 FishAttributes[i] = fishAttr;
@@ -230,7 +259,7 @@ namespace Kingyo
         {
             for (int i = 0; i < fishes.Length; i++)
             {
-                var fishRigidbody = fishes[i].GetComponent<Rigidbody>();
+                var fishRigidbody = fishes[i].rb;
                 FishAttribute fishAttr = FishAttributes[i];
                 fishRigidbody.useGravity = fishAttr.useGravity;
                 fishRigidbody.velocity = new Vector3(0, 0, 0);

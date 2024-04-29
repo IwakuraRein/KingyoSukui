@@ -50,7 +50,7 @@ namespace Kingyo
 
         public void onPoiNetBreak(Poi poi)
         {
-            poi.proxy?.net.BreakNet();
+            poi.proxy?.BreakNet();
             //if (poi == leftPoi)
             //{
             //    PoiOnLeft = false;

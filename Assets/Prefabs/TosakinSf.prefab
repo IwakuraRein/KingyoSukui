@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7219069162736611333}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_AnalCS
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3392430475174138113}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pelvic12_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 480950213186071671}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal41_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8342129468249528116}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pelvic13_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1292793319099235147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Dorsal31
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 676578096982823916}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_CaudalCS3_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 726926818515868299}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal32_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8737448919111080298}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_CaudalCS2_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4850266892714021002}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Eye_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6959929906463811764}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_DorsalCS2
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9177677720681337522}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pectoral13_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8888197599646067325}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_CaudalCS4_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 272447947017769489}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal21_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1254336008159891062}
   - component: {fileID: 7930896143927673858}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: finDorsalB
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6256725863632983127}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Spine4
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5637146329157311078}
   - component: {fileID: 2143368682390165090}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: eye_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 189552015768197239}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal21_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5919980597586863061}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal31_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -812,7 +812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1317996085714226742}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_DorsalCS3
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -843,7 +843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3934750768653319153}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pelvic13_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -874,7 +874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2278641516252912554}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_PectoralCS_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -906,7 +906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8870923594083331293}
   - component: {fileID: 3903889661540824839}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Spine3
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -963,7 +963,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2136932746696192654}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_MouthT
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -994,7 +994,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3656935264630349692}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal42_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1025,7 +1025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8464699874932889672}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal22_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1057,7 +1057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4481894844098708301}
   - component: {fileID: 5418659252242331059}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: finPectoralB
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1205,7 +1205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7672345997488354680}
   - component: {fileID: 7979575584344288341}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Head
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1263,7 +1263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6845257951052090218}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal42_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1294,7 +1294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 738744285213714919}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_CaudalCS4_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1325,7 +1325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2920284688307558327}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_PelvicCS_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1356,7 +1356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6975871572383976441}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pectoral12_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1387,7 +1387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7430633621097519227}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_PectoralCS_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1419,7 +1419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2584565547624528}
   - component: {fileID: 7034806833732063407}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: finAnalB
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1566,7 +1566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2259640554183600000}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Anal13
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1597,7 +1597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1237178054285127173}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pelvic11_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1630,7 +1630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4842093552629918457}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal41_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1662,7 +1662,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7481558193537730587}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Dorsal32
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1693,7 +1693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4818694299648776441}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Eye_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1724,7 +1724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5119908570115738914}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_MCH_Root
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1758,7 +1758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6273254664803646748}
   - component: {fileID: 3954132356741795252}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: body
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1905,7 +1905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2374345693949484370}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Spine2
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1939,7 +1939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1326563681750801098}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Gill_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -1970,7 +1970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8300281568783393850}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Gill_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2001,7 +2001,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7828372121975521283}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pectoral12_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2032,7 +2032,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2599914095592444414}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal12
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2063,7 +2063,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2136384439740493731}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_PelvicCS_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2094,7 +2094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8956027791731359194}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Anal12
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2125,7 +2125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9020820131102180535}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Spine1
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2169,7 +2169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2994447904527589170}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_CaudalCS1
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2200,7 +2200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3524552757353486545}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pelvic12_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2231,7 +2231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6108810760771117285}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal32_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2265,7 +2265,7 @@ GameObject:
   - component: {fileID: 2226577322527356373}
   - component: {fileID: 2244345827479049079}
   - component: {fileID: 5872400357612196391}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TosakinSf
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2322,6 +2322,7 @@ MonoBehaviour:
     isInPoi: 0
     isInBowl: 0
     perimeterThresholdPercentage: {x: 0.3, y: 0.2, z: 0.3}
+  rb: {fileID: 5872400357612196391}
 --- !u!111 &2244345827479049079
 Animation:
   m_ObjectHideFlags: 0
@@ -2347,8 +2348,8 @@ Rigidbody:
   m_GameObject: {fileID: 5726932057848873516}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.05
+  m_AngularDrag: 10
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2374,7 +2375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7714740553256407108}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RIG_Tosakin
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2406,7 +2407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2586182981084876478}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pectoral13_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2437,7 +2438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4245327635244927152}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal31_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2470,7 +2471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1589209806589610681}
   - component: {fileID: 451924091956351022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: finPelvicB
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2617,7 +2618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 439703482488032668}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_CaudalCS2_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2648,7 +2649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1909735295569275245}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_CaudalCS3_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2680,7 +2681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6746947250118658485}
   - component: {fileID: 4573381008098789352}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: finCaudalB
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2827,7 +2828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6055505425222396425}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Dorsal12
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2858,7 +2859,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6864600584959751951}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Anal11
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2891,7 +2892,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7828197019160875112}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_MouthB
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2922,7 +2923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5930305021462461309}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal22_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2953,7 +2954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3132802727775745759}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Dorsal11
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -2985,7 +2986,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2421434067939642644}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Dorsal22
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -3016,7 +3017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8653769420154325501}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pectoral11_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -3049,7 +3050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3354372526619981314}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Caudal11
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -3081,7 +3082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2631543205023135319}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Spine5
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -3126,7 +3127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5297641237062527827}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pectoral11_R
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -3159,7 +3160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9117727999908336384}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Dorsal21
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -3191,7 +3192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2607136340738853534}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_DorsalCS1
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -3222,7 +3223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7235786094415040817}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: B_DEF_Pelvic11_L
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -3256,7 +3257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2896187785549083408}
   - component: {fileID: 8311943564132113786}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: eye_R
   m_TagString: Fish
   m_Icon: {fileID: 0}

@@ -14,7 +14,9 @@ namespace Kingyo
         HandGrabInteractable leftInteractable;
         [SerializeField]
         Renderer[] renders;
-        public Net net;
+        [SerializeField]
+        GameObject poiSurface;
+        public bool isBroken = false;
         public bool IsGrabbing { get; private set; }
         public void FixedUpdate()
         {
@@ -95,6 +97,11 @@ namespace Kingyo
                     Debug.Log($"{this} is released!");
                 }
             }
+        }
+        public void BreakNet()
+        {
+            poiSurface.SetActive(false);
+            isBroken = true;
         }
     }
 }
