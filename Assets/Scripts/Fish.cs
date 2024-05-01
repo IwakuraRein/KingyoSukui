@@ -9,6 +9,8 @@ namespace Kingyo
         [SerializeField]
         public FishAttribute fishAttr;
         public Rigidbody rb;
+        [SerializeField]
+        public Poi poi;
         // Start is called before the first frame update
         void Start()
         {
@@ -16,9 +18,22 @@ namespace Kingyo
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
-
+            if(poi) // confine fish
+            {
+                var center = poi.transform.InverseTransformPoint(poi.bounds.bounds.center);
+                var extents = poi.bounds.bounds.extents;
+                //extents.x /= poi.transform.lossyScale.x;
+                //extents.y /= poi.transform.lossyScale.y;
+                //extents.z /= poi.transform.lossyScale.z;
+                var pos = poi.transform.InverseTransformPoint(transform.position);
+                pos.x = Mathf.Clamp(pos.x, center.x - extents.x, center.x + extents.x);
+                pos.z = Mathf.Clamp(pos.z, center.z - extents.z, center.z + extents.z);
+                pos.y = Mathf.Max(pos.y, center.y - extents.y);
+                pos = poi.transform.TransformPoint(pos);
+                rb.MovePosition(pos);
+            }
         }
         public bool IsUnderWater
         {

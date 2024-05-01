@@ -10,9 +10,15 @@ namespace Kingyo
         [SerializeField]
         Renderer render;
         [SerializeField]
+        internal BoxCollider bounds;
+        [SerializeField]
         float timeGetWet = 1f;
         [SerializeField]
         float timeGetDry = 3f;
+        //[SerializeField]
+        //internal Dictionary<Transform, Transform> snapped = new Dictionary<Transform, Transform>(); // fish -> snap pos
+        //[SerializeField]
+        //Transform[] snapPositions;
         [SerializeField]
         Net net;
         [SerializeField]
@@ -52,14 +58,34 @@ namespace Kingyo
                 f.rb.velocity = Vector3.zero;
                 f.rb.angularVelocity = Vector3.zero;
                 f.rb.constraints = RigidbodyConstraints.FreezeRotation;
+                //f.rb.isKinematic = true;
                 f.rb.useGravity = true;
+                f.poi = this;
                 Logger.Log($"Fish {f} is on the poi!");
+                //if (snapped.Count < snapPositions.Length)
+                //{
+                //    f.rb.velocity = Vector3.zero;
+                //    f.rb.angularVelocity = Vector3.zero;
+                //    f.rb.isKinematic = true;
+                //    //f.rb.useGravity = true;
+                //    foreach (var snapPos in snapPositions)
+                //    {
+                //        if (snapped.ContainsValue(snapPos)) continue;
+                //        f.transform.SetParent(snapPos, false);
+                //        f.transform.localPosition = Vector3.zero;
+                //        snapped.Add(f.transform, snapPos);
+                //        break;
+                //    }
+                //    Logger.Log($"Fish {f} is on the poi!");
+                //}
             };
             OnFishExitPoi += (Poi p, Fish f) =>
             {
                 f.rb.velocity = Vector3.zero;
                 f.rb.angularVelocity = Vector3.zero;
                 f.rb.constraints = RigidbodyConstraints.None;
+                //f.rb.isKinematic = false;
+                f.poi = null;
                 //if (!f.IsUnderWater) f.rb.useGravity = true;
                 Logger.Log($"Fish {f} leaves the poi!");
             };
