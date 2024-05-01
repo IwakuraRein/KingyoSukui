@@ -138,7 +138,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8891903954617608657}
   m_Father: {fileID: 395141057136355517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6131253786897329299
@@ -258,6 +259,37 @@ MonoBehaviour:
   - {fileID: 3868434002707610381}
   - {fileID: 8386471108447059233}
   threshold: 0.04
+--- !u!1 &2670440498141950700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8891903954617608657}
+  m_Layer: 7
+  m_Name: snap1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8891903954617608657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670440498141950700}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0164, z: 0.1383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6466480976118447790}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2885341312223507895
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,8 +528,8 @@ Transform:
   m_GameObject: {fileID: 4107686248955433050}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.0001, y: -0.0146, z: 0.1396}
-  m_LocalScale: {x: 1, y: 1.18, z: 1}
+  m_LocalPosition: {x: -0.000099972, y: -0.0158, z: 0.1396}
+  m_LocalScale: {x: 0.79121745, y: 0.71924734, z: 0.79121745}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 395141057136355517}
@@ -601,6 +633,8 @@ MonoBehaviour:
   timeGetWet: 1
   timeGetDry: 3
   net: {fileID: 7400020265416927469}
+  snapPositions:
+  - {fileID: 8891903954617608657}
   audioSource: {fileID: 5377525279954430171}
   waterAudio: {fileID: 8300000, guid: 21d1fcfa1d699c743b009f8253e7b753, type: 3}
   proxy: {fileID: 0}

@@ -16,9 +16,13 @@ namespace Kingyo
         [SerializeField]
         Net net;
         [SerializeField]
+        Transform[] snapPositions;
+        [SerializeField]
         AudioSource audioSource;
         [SerializeField]
         AudioClip waterAudio;
+
+        Dictionary<Fish, Transform> snapped = new Dictionary<Fish, Transform>(); // fish -> position
 
         public PoiGrabbableProxy proxy;
 
@@ -49,20 +53,53 @@ namespace Kingyo
             };
             OnFishEnterPoi += (Poi p, Fish f) =>
             {
-                f.rb.velocity = Vector3.zero;
-                f.rb.angularVelocity = Vector3.zero;
-                f.rb.constraints = RigidbodyConstraints.FreezeRotation;
-                f.rb.useGravity = true;
-                Logger.Log($"Fish {f} is on the poi!");
+                if (snapped.Count < snapPositions.Length)
+                {
+                    foreach (var pos in snapPositions)
+                    {
+                        if (snapped.ContainsValue(pos)) continue;
+                        snapped.Add(f, pos);
+                        f.transform.SetParent(pos, false);
+                        f.transform.localPosition = Vector3.zero;
+                        f.rb.velocity = Vector3.zero;
+                        f.rb.angularVelocity = Vector3.zero;
+                        f.rb.constraints = RigidbodyConstraints.FreezeAll;
+                        //f.rb.useGravity = true;
+                        Logger.Log($"Fish {f} is on the poi!");
+                        break;
+                    }
+                }
             };
             OnFishExitPoi += (Poi p, Fish f) =>
             {
                 f.rb.velocity = Vector3.zero;
                 f.rb.angularVelocity = Vector3.zero;
                 f.rb.constraints = RigidbodyConstraints.None;
+                if (snapped.ContainsKey(f))
+                {
+                    snapped.Remove(f);
+                    f.transform.parent = null;
+                }
                 //if (!f.IsUnderWater) f.rb.useGravity = true;
                 Logger.Log($"Fish {f} leaves the poi!");
             };
+        }
+        private void FixedUpdate()
+        {
+            if (Vector3.Dot(transform.up, Vector3.up) < 0)
+            {
+                foreach (var fish in snapped.Keys)
+                {
+                    fish.rb.constraints = RigidbodyConstraints.None;
+                    fish.rb.useGravity = true;
+                }
+            }
+            //else
+                //foreach (var fish in snapped.Keys)
+                //{
+                //    fish.rb.constraints = RigidbodyConstraints.FreezeAll;
+                //    fish.rb.useGravity = false;
+                //}
         }
         private void OnEnable()
         {
