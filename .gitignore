@@ -71,3 +71,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/Oculus/OculusProjectConfig.asset
+/Assets/Samples/Meta XR Interaction SDK OVR Samples
+Assets/Resources/deferred-rendering-impl-main.zip.meta
+Assets/Resources/deferred-rendering-impl-main.zip
+Assets/Resources/OVRHandPrefab.prefab
+Assets/Resources/OVRHandPrefab.prefab.meta

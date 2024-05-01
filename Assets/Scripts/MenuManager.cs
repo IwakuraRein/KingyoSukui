@@ -33,18 +33,18 @@ public class MenuManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            if (OVRInput.GetDown(OVRInput.Button.Three))
-            {
-                switchLevel(1);
-            }
-            else if (OVRInput.GetDown(OVRInput.Button.Four))
-            {
-                switchLevel(2);
-            }
-            else if (OVRInput.GetDown(OVRInput.Button.Two))
-            {
-                quitGame();
-            }
+            // if (OVRInput.GetDown(OVRInput.Button.Three))
+            // {
+            //     switchLevel(1);
+            // }
+            // else if (OVRInput.GetDown(OVRInput.Button.Four))
+            // {
+            //     switchLevel(2);
+            // }
+            // else if (OVRInput.GetDown(OVRInput.Button.Two))
+            // {
+            //     quitGame();
+            // }
         }
         else if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
         {
