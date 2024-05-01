@@ -34,6 +34,8 @@ namespace Kingyo
         public UltEvent<Poi, Fish> OnFishExitPoi = new UltEvent<Poi, Fish>();
         public UltEvent<Poi> OnPoiEnterWater = new UltEvent<Poi>();
         public UltEvent<Poi> OnPoiExitWater = new UltEvent<Poi>();
+        public UltEvent OnPoiGetGrabbed = new UltEvent();
+        public UltEvent OnPoiGetReleased = new UltEvent();
 
         private void Start()
         {
@@ -65,6 +67,7 @@ namespace Kingyo
                         f.rb.angularVelocity = Vector3.zero;
                         f.rb.constraints = RigidbodyConstraints.FreezeAll;
                         //f.rb.useGravity = true;
+                        f.fishAttr.isInPoi = true;
                         Logger.Log($"Fish {f} is on the poi!");
                         break;
                     }
@@ -80,8 +83,22 @@ namespace Kingyo
                     snapped.Remove(f);
                     f.transform.parent = null;
                 }
+                f.fishAttr.isInPoi = false;
                 //if (!f.IsUnderWater) f.rb.useGravity = true;
                 Logger.Log($"Fish {f} leaves the poi!");
+            };
+            OnPoiGetReleased += () =>
+            {
+                foreach((var f, var pos) in snapped)
+                {
+                    f.transform.parent = null;
+
+                    f.rb.velocity = Vector3.zero;
+                    f.rb.angularVelocity = Vector3.zero;
+                    f.rb.constraints = RigidbodyConstraints.None;
+                    f.fishAttr.isInPoi = false;
+                    Logger.Log($"Fish {f} leaves the poi!");
+                }
             };
         }
         private void FixedUpdate()
@@ -160,9 +177,8 @@ namespace Kingyo
                 var fish = other.attachedRigidbody.gameObject.GetComponent<Fish>();
                 if (fish != null)
                 {
-                    if (!fish.fishAttr.isInPoi)
+                    if (!fish.fishAttr.isInPoi && Vector3.Dot(transform.up, Vector3.up) > Mathf.Epsilon)
                     {
-                        fish.fishAttr.isInPoi = true;
                         OnFishEnterPoi?.Invoke(this, fish);
                         Debug.Log($"{fish} is on the poi!");
                     }
@@ -187,7 +203,6 @@ namespace Kingyo
                 {
                     if (fish.fishAttr.isInPoi)
                     {
-                        fish.fishAttr.isInPoi = false;
                         OnFishExitPoi?.Invoke(this, fish);
                         Debug.Log($"{fish} leaves the poi!");
                     }

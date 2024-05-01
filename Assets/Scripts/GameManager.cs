@@ -72,6 +72,7 @@ namespace Kingyo
                 leftPoi.gameObject.SetActive(true);
                 leftPoi.proxy = p;
                 PoiOnLeft = true;
+                leftPoi.OnPoiGetGrabbed?.Invoke();
             }
             else
             {
@@ -79,6 +80,7 @@ namespace Kingyo
                 rightPoi.gameObject.SetActive(true);
                 rightPoi.proxy = p;
                 PoiOnRight = true;
+                rightPoi.OnPoiGetGrabbed?.Invoke();
             }
         }
         public void OnPoiReleased(PoiGrabbableProxy p)
@@ -89,6 +91,7 @@ namespace Kingyo
                 rightPoi.gameObject.SetActive(false);
                 rightPoi.proxy = null;
                 PoiOnRight = false;
+                rightPoi.OnPoiGetReleased?.Invoke();
             }
             if (currentLeftGrabbing == p)
             {
@@ -96,6 +99,7 @@ namespace Kingyo
                 leftPoi.gameObject.SetActive(false);
                 leftPoi.proxy = null;
                 PoiOnLeft = false;
+                leftPoi.OnPoiGetReleased?.Invoke();
             }
         }
 

@@ -2317,7 +2317,7 @@ MonoBehaviour:
     poiAvoidanceWeight: 0.1
     boundaryAvoidanceWeight: 0.001
     fishAvoidanceWeight: 0.1
-    maxSpeed: 0.05
+    maxSpeed: 0.1
     score: 1
     isInPoi: 0
     isInBowl: 0

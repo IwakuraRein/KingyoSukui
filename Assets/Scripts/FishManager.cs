@@ -221,7 +221,7 @@ namespace Kingyo
                     if (fishes[i].fishAttr.isInBowl)
                     {
                         fishAttr.isFishInBowl = true;
-                        fishRigidbody.useGravity = false;
+                        fishRigidbody.useGravity = true;
                         if (fishRigidbody.velocity.magnitude > fishSetting.speedInBowl)
                             fishRigidbody.velocity *= 0.5f;
                         fishRigidbody.angularVelocity *= 0.5f;

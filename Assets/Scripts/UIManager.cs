@@ -30,9 +30,9 @@ namespace Kingyo
 
         private Dictionary<int, int> levelGoals = new Dictionary<int, int>()
         {
-            { 1, 10 }, // Level 1 has a goal of 100 points
-            { 2, 15 }, // Level 2 has a goal of 200 points
-            { 3, 20 } // Level 3 has a goal of 300 points
+            { 1, 999 }, // Level 1 has a goal of 100 points
+            { 2, 999 }, // Level 2 has a goal of 200 points
+            { 3, 999 } // Level 3 has a goal of 300 points
             // Add more levels and their goals as needed
         };
         private void Awake()

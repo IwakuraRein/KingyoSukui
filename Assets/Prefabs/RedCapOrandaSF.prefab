@@ -2810,8 +2810,8 @@ MonoBehaviour:
     poiAvoidanceWeight: 0.1
     boundaryAvoidanceWeight: 0.001
     fishAvoidanceWeight: 0.1
-    maxSpeed: 0.05
-    score: 1
+    maxSpeed: 0.2
+    score: 2
     isInPoi: 0
     isInBowl: 0
     perimeterThresholdPercentage: {x: 0.3, y: 0.2, z: 0.3}
