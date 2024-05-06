@@ -61,12 +61,13 @@ namespace Kingyo
                     {
                         if (snapped.ContainsValue(pos)) continue;
                         snapped.Add(f, pos);
-                        f.transform.SetParent(pos, false);
+                        f.transform.SetParent(pos, true);
                         f.transform.localPosition = Vector3.zero;
                         f.rb.velocity = Vector3.zero;
                         f.rb.angularVelocity = Vector3.zero;
-                        f.rb.constraints = RigidbodyConstraints.FreezeAll;
+                        //f.rb.constraints = RigidbodyConstraints.FreezeAll;
                         //f.rb.useGravity = true;
+                        f.rb.isKinematic = true;
                         f.fishAttr.isInPoi = true;
                         Logger.Log($"Fish {f} is on the poi!");
                         break;
@@ -78,6 +79,7 @@ namespace Kingyo
                 f.rb.velocity = Vector3.zero;
                 f.rb.angularVelocity = Vector3.zero;
                 f.rb.constraints = RigidbodyConstraints.None;
+                f.rb.isKinematic = false;
                 if (snapped.ContainsKey(f))
                 {
                     snapped.Remove(f);
@@ -92,7 +94,7 @@ namespace Kingyo
                 foreach((var f, var pos) in snapped)
                 {
                     f.transform.parent = null;
-
+                    f.rb.isKinematic = false;
                     f.rb.velocity = Vector3.zero;
                     f.rb.angularVelocity = Vector3.zero;
                     f.rb.constraints = RigidbodyConstraints.None;
@@ -107,8 +109,10 @@ namespace Kingyo
             {
                 foreach (var fish in snapped.Keys)
                 {
-                    fish.rb.constraints = RigidbodyConstraints.None;
-                    fish.rb.useGravity = true;
+                    //fish.rb.constraints = RigidbodyConstraints.None;
+                    //fish.rb.useGravity = true;
+                    //fish.rb.isKinematic = false;
+                    OnFishExitPoi?.Invoke(this, fish);
                 }
             }
             //else
