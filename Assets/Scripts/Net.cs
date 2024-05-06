@@ -15,6 +15,8 @@ namespace Kingyo
         Collider[] colliders;
         public float threshold = 0.1f;
 
+        public bool IsBroken { get; private set; } = false;
+
         private void Start()
         {
             render = GetComponent<Renderer>();
@@ -26,8 +28,15 @@ namespace Kingyo
                 Debug.DrawRay(contact.point, contact.normal * 10, Color.red);
                 if (collision.relativeVelocity.magnitude > threshold || collision.impulse.magnitude > threshold)
                 {
-                    BreakNet();
-                    if (poi) GameManager.Instance.onPoiNetBreak(poi);
+                    if (poi)
+                    {
+                        if (poi.IsInWater)
+                        {
+                            BreakNet();
+                            poi.OnPoiBreak?.Invoke();
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -40,6 +49,7 @@ namespace Kingyo
             {
                 collider.enabled = true;
             }
+            IsBroken = false;
         }
 
         public void BreakNet()
@@ -52,6 +62,7 @@ namespace Kingyo
             {
                 collider.enabled = false;
             }
+            IsBroken = true;
         }
 
         IEnumerator destroyParent(float time)

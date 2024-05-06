@@ -47,21 +47,6 @@ namespace Kingyo
         {
 
         }
-
-        public void onPoiNetBreak(Poi poi)
-        {
-            poi.proxy?.BreakNet();
-            //if (poi == leftPoi)
-            //{
-            //    PoiOnLeft = false;
-            //    leftPoi.SetActive(false);
-            //}
-            //if (poi == rightPoi)
-            //{
-            //    PoiOnRight = false;
-            //    rightPoi.SetActive(false);
-            //}
-        }
         public void OnPoiGetGrabbed(PoiGrabbableProxy p, bool isLeft)
         {
             if (isLeft && PoiOnLeft) return;

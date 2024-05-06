@@ -232,7 +232,7 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 24
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 231
@@ -699,6 +699,8 @@ MonoBehaviour:
   net: {fileID: 7400020265416927469}
   snapPositions:
   - {fileID: 8891903954617608657}
+  - {fileID: 3613103076196270652}
+  - {fileID: 7550556121337390518}
   audioSource: {fileID: 5377525279954430171}
   waterAudio: {fileID: 8300000, guid: 21d1fcfa1d699c743b009f8253e7b753, type: 3}
   proxy: {fileID: 0}
@@ -713,6 +715,8 @@ MonoBehaviour:
   OnPoiGetGrabbed:
     _PersistentCalls: []
   OnPoiGetReleased:
+    _PersistentCalls: []
+  OnPoiBreak:
     _PersistentCalls: []
 --- !u!54 &2960654920400654116
 Rigidbody:

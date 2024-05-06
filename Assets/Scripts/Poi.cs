@@ -36,10 +36,24 @@ namespace Kingyo
         public UltEvent<Poi> OnPoiExitWater = new UltEvent<Poi>();
         public UltEvent OnPoiGetGrabbed = new UltEvent();
         public UltEvent OnPoiGetReleased = new UltEvent();
+        public UltEvent OnPoiBreak = new UltEvent();
+
+        public bool IsBroken { get => net.IsBroken; }
 
         private void Start()
         {
             mat = render.material;
+
+            OnPoiBreak += () =>
+            {
+                proxy?.BreakNet();
+                foreach (var fish in snapped.Keys)
+                {
+                    OnFishExitPoi?.Invoke(this, fish);
+                }
+            };
+
+
             OnPoiEnterWater += (Poi _) =>
             {
                 StopAllCoroutines();
@@ -55,6 +69,7 @@ namespace Kingyo
             };
             OnFishEnterPoi += (Poi p, Fish f) =>
             {
+                if (IsBroken) return;
                 if (snapped.Count < snapPositions.Length)
                 {
                     foreach (var pos in snapPositions)
@@ -124,7 +139,11 @@ namespace Kingyo
         }
         private void OnEnable()
         {
-            if (proxy && proxy.isBroken) net.BreakNet();
+            if (proxy && proxy.isBroken)
+            {
+                net.BreakNet();
+
+            }
             else net.EnableNet();
         }
         IEnumerator GetWet()
