@@ -47,9 +47,18 @@ namespace Kingyo
             OnPoiBreak += () =>
             {
                 proxy?.BreakNet();
+                Fish[] l = new Fish[snapped.Count];
+                int i = 0;
                 foreach (var fish in snapped.Keys)
                 {
-                    OnFishExitPoi?.Invoke(this, fish);
+                    //fish.rb.constraints = RigidbodyConstraints.None;
+                    //fish.rb.useGravity = true;
+                    //fish.rb.isKinematic = false;
+                    l[i++] = fish;
+                }
+                foreach (var f in l)
+                {
+                    OnFishExitPoi?.Invoke(this, f);
                 }
             };
 
@@ -122,12 +131,18 @@ namespace Kingyo
         {
             if (Vector3.Dot(transform.up, Vector3.up) < 0)
             {
+                Fish[] l = new Fish[snapped.Count];
+                int i = 0;
                 foreach (var fish in snapped.Keys)
                 {
                     //fish.rb.constraints = RigidbodyConstraints.None;
                     //fish.rb.useGravity = true;
                     //fish.rb.isKinematic = false;
-                    OnFishExitPoi?.Invoke(this, fish);
+                    l[i++] = fish;
+                }
+                foreach (var f in l)
+                {
+                    OnFishExitPoi?.Invoke(this, f);
                 }
             }
             //else

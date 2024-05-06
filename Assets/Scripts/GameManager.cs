@@ -10,18 +10,20 @@ namespace Kingyo
     {
         public static GameManager Instance { get; private set; }
         [SerializeField]
-        private Poi leftPoi;
+        internal Poi leftPoi;
         [SerializeField]
-        private Poi rightPoi;
+        internal Poi rightPoi;
         [SerializeField]
-        private GameObject bowl;
+        internal GameObject bowl;
         [SerializeField]
-        private GameObject player;
+        internal GameObject dplayer;
         [SerializeField]
         PoiGrabbableProxy[] grabbablePois;
         //public PoiGrabbableProxy currentGrabbingPoi { get; private set; }
         public PoiGrabbableProxy currentLeftGrabbing { get; private set; }
         public PoiGrabbableProxy currentRightGrabbing { get; private set; }
+
+        public int currentLevel { get; set; }
 
         //public bool hasPoiOnHand { get; private set; } = false;
         //public bool hasBowlOnHand { get; private set; } = false;

@@ -19,6 +19,7 @@ namespace Kingyo
                 fish.rb.velocity = Vector3.zero;
                 fish.rb.angularVelocity = Vector3.zero;
                 fish.rb.isKinematic = true;
+                fish.rb.constraints = RigidbodyConstraints.FreezeAll;
                 Logger.Log($"{fish} sanpped to the bowl!");
             }
         }

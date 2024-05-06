@@ -22,7 +22,7 @@ namespace Kingyo
                         GameObject go = new GameObject("GameManager");
                         go.tag = "GameController";
                         _instance = go.AddComponent<FishManager>();
-                        DontDestroyOnLoad(go);
+                        //DontDestroyOnLoad(go);
                     }
                 }
                 return _instance;
@@ -30,8 +30,6 @@ namespace Kingyo
         }
         [SerializeField]
         GameObject[] fishPrefabs; // prefab of fish
-        [SerializeField]
-        Poi[] PoiObjects;
         Fish[] fishes;
         private int PoiInWaterCount = 0;
         private NativeArray<Vector3> PoiPositions;
@@ -64,7 +62,7 @@ namespace Kingyo
             }
             CreateFish(fishSetting.Center, fishSetting.Bounds, fishSetting.OffsetPercentage, fishSetting.MaxFishCount);
             transformAccessArray = new TransformAccessArray(fishes.Length);
-            PoiPositions = new NativeArray<Vector3>(PoiObjects.Length, Allocator.Persistent);
+            PoiPositions = new NativeArray<Vector3>(2, Allocator.Persistent);
             FishPositions = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
             FishForces = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
             FishVelocities = new NativeArray<Vector3>(fishes.Length, Allocator.Persistent);
@@ -90,13 +88,17 @@ namespace Kingyo
         void FixedUpdate()
         {
             PoiInWaterCount = 0;
-            for (int i = 0; i < PoiObjects.Length; i++)
+            //for (int i = 0; i < PoiObjects.Length; i++)
+            //{
+            if (GameManager.Instance.leftPoi.IsInWater)
             {
-                if (PoiObjects[i].IsInWater)
-                {
-                    PoiPositions[PoiInWaterCount++] = PoiObjects[i].transform.position;
-                }
+                PoiPositions[PoiInWaterCount++] = GameManager.Instance.leftPoi.transform.position;
             }
+            if (GameManager.Instance.rightPoi.IsInWater)
+            {
+                PoiPositions[PoiInWaterCount++] = GameManager.Instance.rightPoi.transform.position;
+            }
+            //}
 
             for (int i = 0; i < fishes.Length; i++)
             {

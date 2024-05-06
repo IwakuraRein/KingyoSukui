@@ -50,7 +50,7 @@ namespace Kingyo
         {
             bowl = GameObject.Find("bowl").GetComponent<Bowl>();
             //level will equal to current scene number
-            startLevel(SceneManager.GetActiveScene().buildIndex);
+            startLevel(GameManager.Instance.currentLevel);
         }
 
         // Update is called once per frame
@@ -59,7 +59,9 @@ namespace Kingyo
             if (bowl != null)
             {
                 UpdateScore(bowl.GetComponent<Bowl>().GetScore());
-            } else {
+            }
+            else
+            {
                 Debug.Log("bool not found");//TODO: Continue Finding it?
             }
 
@@ -76,19 +78,23 @@ namespace Kingyo
         void UpdateScore(int score)
         {
             scoreText.text = "Score: " + score;
-            if (score >= ((SceneManager.GetActiveScene().buildIndex == 0) ? 10 : levelGoals[SceneManager.GetActiveScene().buildIndex]))
+            if (score >= ((GameManager.Instance.currentLevel == 0) ? 10 : levelGoals[GameManager.Instance.currentLevel]))
             {
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                //SceneManager.LoadScene(GameManager.Instance.currentLevel + 1);
                 //play some winning scenario
-                if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+                if (GameManager.Instance.currentLevel == SceneManager.sceneCountInBuildSettings - 1)
                 {
                     // Load the menu scene if this is the last level
-                    SceneManager.LoadScene(0);
+                    SceneManager.UnloadSceneAsync(GameManager.Instance.currentLevel).completed += (AsyncOperation _) => { SceneManager.LoadSceneAsync(0); GameManager.Instance.currentLevel = 0; };
+                
                 }
                 else
                 {
                     // Load the next level
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    SceneManager.UnloadSceneAsync(GameManager.Instance.currentLevel).completed += (AsyncOperation _) =>
+                    {
+                        SceneManager.LoadSceneAsync(++GameManager.Instance.currentLevel, LoadSceneMode.Additive);
+                    };
                 }
             }
         }
@@ -97,7 +103,7 @@ namespace Kingyo
         {
             levelText.text = "Level: " + level;
             goalText.text = level == 0 ? "Goal: " + levelGoals[1] : "Goal: " + levelGoals[level];
-            startingTime = level == 0? levelTimeLimits[1] : levelTimeLimits[level];
+            startingTime = level == 0 ? levelTimeLimits[1] : levelTimeLimits[level];
         }
 
 
