@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using AYellowpaper.SerializedCollections;
+
 namespace Kingyo
 {
     public class UIManager : MonoBehaviour
@@ -19,22 +21,6 @@ namespace Kingyo
         // Start is called before the first frame update
         private Bowl bowl;
         private float startingTime;
-
-        private Dictionary<int, float> levelTimeLimits = new Dictionary<int, float>()
-        {
-            { 1, 200f }, // Level 1 has a time limit of 200 seconds
-            { 2, 150f }, // Level 2 has a time limit of 150 seconds
-            { 3, 100f } // Level 3 has a time limit of 100 seconds
-            // Add more levels and their time limits as needed
-        };
-
-        private Dictionary<int, int> levelGoals = new Dictionary<int, int>()
-        {
-            { 1, 999 }, // Level 1 has a goal of 100 points
-            { 2, 999 }, // Level 2 has a goal of 200 points
-            { 3, 999 } // Level 3 has a goal of 300 points
-            // Add more levels and their goals as needed
-        };
         private void Awake()
         {
             if (Instance == null)
@@ -78,32 +64,17 @@ namespace Kingyo
         void UpdateScore(int score)
         {
             scoreText.text = "Score: " + score;
-            if (score >= ((GameManager.Instance.currentLevel == 0) ? 10 : levelGoals[GameManager.Instance.currentLevel]))
+            if (score >= ((GameManager.Instance.currentLevel == 0) ? 10 : GameManager.Instance.levelGoals[GameManager.Instance.currentLevel]))
             {
-                //SceneManager.LoadScene(GameManager.Instance.currentLevel + 1);
-                //play some winning scenario
-                if (GameManager.Instance.currentLevel == SceneManager.sceneCountInBuildSettings - 1)
-                {
-                    // Load the menu scene if this is the last level
-                    SceneManager.UnloadSceneAsync(GameManager.Instance.currentLevel).completed += (AsyncOperation _) => { SceneManager.LoadSceneAsync(0); GameManager.Instance.currentLevel = 0; };
-                
-                }
-                else
-                {
-                    // Load the next level
-                    SceneManager.UnloadSceneAsync(GameManager.Instance.currentLevel).completed += (AsyncOperation _) =>
-                    {
-                        SceneManager.LoadSceneAsync(++GameManager.Instance.currentLevel, LoadSceneMode.Additive);
-                    };
-                }
+                GameManager.Instance.OnLoadNextLevel?.Invoke();
             }
         }
 
         void startLevel(int level)
         {
             levelText.text = "Level: " + level;
-            goalText.text = level == 0 ? "Goal: " + levelGoals[1] : "Goal: " + levelGoals[level];
-            startingTime = level == 0 ? levelTimeLimits[1] : levelTimeLimits[level];
+            goalText.text = level == 0 ? "Goal: " + GameManager.Instance.levelGoals[1] : "Goal: " + GameManager.Instance.levelGoals[level];
+            startingTime = level == 0 ? GameManager.Instance.levelTimeLimits[1] : GameManager.Instance.levelTimeLimits[level];
         }
 
 

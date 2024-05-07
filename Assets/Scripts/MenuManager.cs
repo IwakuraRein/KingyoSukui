@@ -42,7 +42,6 @@ public class MenuManager : MonoBehaviour
 #if DEBUG
             else if (OVRInput.GetDown(OVRInput.Button.Four))
             {
-
                 switchLevel(++GameManager.Instance.currentLevel); GameManager.Instance.currentLevel++;
                 menuCanvas.SetActive(false);
             }

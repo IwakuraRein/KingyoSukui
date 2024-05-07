@@ -14,7 +14,7 @@ namespace Kingyo
         [SerializeField]
         float timeGetDry = 3f;
         [SerializeField]
-        Net net;
+        internal Net net;
         [SerializeField]
         Transform[] snapPositions;
         [SerializeField]
@@ -157,7 +157,6 @@ namespace Kingyo
             if (proxy && proxy.isBroken)
             {
                 net.BreakNet();
-
             }
             else net.EnableNet();
         }
