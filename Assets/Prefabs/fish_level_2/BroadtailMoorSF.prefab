@@ -2044,7 +2044,7 @@ MonoBehaviour:
     poiAvoidanceWeight: 0.1
     boundaryAvoidanceWeight: 0.001
     fishAvoidanceWeight: 0.1
-    maxSpeed: 0.1
+    maxSpeed: 0.2
     score: 1
     isInPoi: 0
     isInBowl: 0
@@ -2092,7 +2092,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &4681174271942837702
 GameObject:
   m_ObjectHideFlags: 0

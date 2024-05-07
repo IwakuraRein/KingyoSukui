@@ -34,7 +34,7 @@ public class MenuManager : MonoBehaviour
     {
         if (GameManager.Instance.currentLevel == 0)
         {
-            if (OVRInput.GetDown(OVRInput.Button.Three))
+            if (OVRInput.GetDown(OVRInput.Button.One))
             {
                 switchLevel(++GameManager.Instance.currentLevel);
                 menuCanvas.SetActive(false);

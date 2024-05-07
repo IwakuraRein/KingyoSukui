@@ -371,15 +371,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishPrefabs:
-  - {fileID: 4566545722189806337, guid: 0562610692ce37f4194a26ab891e50e5, type: 3}
-  - {fileID: 6687064165282074955, guid: d0c48fb7bfcbe364b93cfb1b404492f6, type: 3}
-  - {fileID: 8794845505853409006, guid: 62fea831f4998c9458cb7d466e085eb5, type: 3}
-  - {fileID: 5726932057848873516, guid: 1007ca6e100dd034e9e668d6d66b4be6, type: 3}
+  - {fileID: 4566545722189806337, guid: c3bd9ed1b023d3b4085dbe25f2d2462d, type: 3}
+  - {fileID: 6687064165282074955, guid: 573f80192a63b214f970bf105f7e7ada, type: 3}
+  - {fileID: 8794845505853409006, guid: 91deaa9c2bbbbe9449d393fe02542a39, type: 3}
+  - {fileID: 5726932057848873516, guid: f6ef45f3162d43c44b4ba99695044245, type: 3}
   isAIEnabled: 1
   fishSetting:
     MaxFishCount: 50
     WaterDepth: 0.25
-    OffsetPercentage: {x: 0.1, y: 0.35, z: 0.2}
+    OffsetPercentage: {x: 0.2, y: 0.35, z: 0.3}
     tank: {fileID: 969406328}
     speedInBowl: 0.01
 --- !u!4 &498715657
@@ -1387,79 +1387,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625147173}
   m_CullTransparentMesh: 1
---- !u!1001 &1753089066
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3608815473527128255, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_Name
-      value: poi (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.2000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 37.90939
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.341
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.820169
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.017628582
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.9998447
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 182.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453560354165847272, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c82e6a34512474c42b97e7407ca6e6d0, type: 3}
 --- !u!1 &2000608155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,6 +1664,5 @@ SceneRoots:
   - {fileID: 498715657}
   - {fileID: 126680840}
   - {fileID: 407935253}
-  - {fileID: 1753089066}
   - {fileID: 969406327}
   - {fileID: 919212934}
