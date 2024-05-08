@@ -84,6 +84,11 @@ namespace Kingyo
             FishVelocities.Dispose();
             FishForces.Dispose();
             FishAttributes.Dispose();
+            //foreach (var f in fishes)
+            //{
+            //    Debug.Log($"{f} destroy");
+            //    DestroyImmediate(f);
+            //}
         }
         void FixedUpdate()
         {
@@ -127,7 +132,7 @@ namespace Kingyo
                     Random.Range(-bounds.extents.y + offset.y, -bounds.extents.y + fishSetting.WaterDepth - offset.y),
                     Random.Range(-bounds.extents.z + offset.z, bounds.extents.z - offset.z));
                 int index = Random.Range(0, fishPrefabs.Length);
-                GameObject fish = Instantiate(fishPrefabs[index], pos, Quaternion.identity);
+                GameObject fish = Instantiate(fishPrefabs[index], pos, Quaternion.identity, this.transform);
                 // randomize fish velocity and direction
                 Vector3 direction = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
                 fish.transform.forward = direction;

@@ -286,7 +286,7 @@ Transform:
   m_GameObject: {fileID: 2670440498141950700}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0164, z: 0.1549}
+  m_LocalPosition: {x: 0, y: -0.0164, z: 0.1392}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -699,8 +699,6 @@ MonoBehaviour:
   net: {fileID: 7400020265416927469}
   snapPositions:
   - {fileID: 8891903954617608657}
-  - {fileID: 3613103076196270652}
-  - {fileID: 7550556121337390518}
   audioSource: {fileID: 5377525279954430171}
   waterAudio: {fileID: 8300000, guid: 21d1fcfa1d699c743b009f8253e7b753, type: 3}
   proxy: {fileID: 0}

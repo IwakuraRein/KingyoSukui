@@ -7,17 +7,13 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance { get; private set; }
-    [SerializeField] private GameObject menuCanvas;
+    [SerializeField] internal GameObject menuCanvas;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
         } else {
             Destroy(gameObject);
         }
-    }
-    public void switchLevel(int level)
-    {
-        SceneManager.LoadScene(level,LoadSceneMode.Additive);
     }
 
     public void quitGame()
@@ -27,7 +23,18 @@ public class MenuManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+        if (GameManager.Instance.currentLevel != 0)
+        {
+            Time.timeScale = 0;
+            SceneManager.UnloadSceneAsync(GameManager.Instance.currentLevel).completed += (AsyncOperation _) =>
+            {
+                Time.timeScale = 1f;
+                GameManager.Instance.currentLevel = 0;
+                SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(GameManager.Instance.currentLevel));
+                menuCanvas.SetActive(true);
+            };
+        }
     }
 
     private void Update()
@@ -36,16 +43,12 @@ public class MenuManager : MonoBehaviour
         {
             if (OVRInput.GetDown(OVRInput.Button.One))
             {
-                switchLevel(++GameManager.Instance.currentLevel);
-                menuCanvas.SetActive(false);
+                SceneManager.LoadSceneAsync(++GameManager.Instance.currentLevel, LoadSceneMode.Additive).completed += (AsyncOperation _) =>
+                {
+                    SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(GameManager.Instance.currentLevel));
+                    menuCanvas.SetActive(false);
+                };
             }
-#if DEBUG
-            else if (OVRInput.GetDown(OVRInput.Button.Four))
-            {
-                switchLevel(++GameManager.Instance.currentLevel); GameManager.Instance.currentLevel++;
-                menuCanvas.SetActive(false);
-            }
-#endif
             else if (OVRInput.GetDown(OVRInput.Button.Two))
             {
                 quitGame();
@@ -56,8 +59,6 @@ public class MenuManager : MonoBehaviour
             if (OVRInput.GetDown(OVRInput.Button.Two))
             {
                 ReturnToMenu();
-                GameManager.Instance.currentLevel = 0;
-                menuCanvas.SetActive(true);
             }
         }
     }

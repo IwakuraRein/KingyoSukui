@@ -107,7 +107,7 @@ namespace Kingyo
                 if (snapped.ContainsKey(f))
                 {
                     snapped.Remove(f);
-                    f.transform.parent = null;
+                    f.transform.SetParent(FishManager.instance.transform, true);
                 }
                 f.fishAttr.isInPoi = false;
                 //if (!f.IsUnderWater) f.rb.useGravity = true;
@@ -117,7 +117,7 @@ namespace Kingyo
             {
                 foreach((var f, var pos) in snapped)
                 {
-                    f.transform.parent = null;
+                    f.transform.SetParent(FishManager.instance.transform, true);
                     f.rb.isKinematic = false;
                     f.rb.velocity = Vector3.zero;
                     f.rb.angularVelocity = Vector3.zero;
@@ -159,6 +159,8 @@ namespace Kingyo
                 net.BreakNet();
             }
             else net.EnableNet();
+
+            net.threshold = GameManager.Instance.levelSurfaceThreshold[GameManager.Instance.currentLevel];
         }
         IEnumerator GetWet()
         {
@@ -217,7 +219,7 @@ namespace Kingyo
                     if (!fish.fishAttr.isInPoi && Vector3.Dot(transform.up, Vector3.up) > Mathf.Epsilon)
                     {
                         OnFishEnterPoi?.Invoke(this, fish);
-                        Debug.Log($"{fish} is on the poi!");
+                        //Debug.Log($"{fish} is on the poi!");
                     }
                 }
             }
@@ -227,7 +229,7 @@ namespace Kingyo
                 {
                     isInWater = true;
                     OnPoiEnterWater?.Invoke(this);
-                    Debug.Log($"{this} enters water!");
+                    //Debug.Log($"{this} enters water!");
                 }
             }
         }
@@ -241,7 +243,7 @@ namespace Kingyo
                     if (fish.fishAttr.isInPoi)
                     {
                         OnFishExitPoi?.Invoke(this, fish);
-                        Debug.Log($"{fish} leaves the poi!");
+                        //Debug.Log($"{fish} leaves the poi!");
                     }
                 }
             }
@@ -251,7 +253,7 @@ namespace Kingyo
                 {
                     isInWater = false;
                     OnPoiExitWater?.Invoke(this);
-                    Debug.Log($"{this} leaves water!");
+                    //Debug.Log($"{this} leaves water!");
                 }
             }
         }

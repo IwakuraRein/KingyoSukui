@@ -21,6 +21,7 @@ namespace Kingyo
         // Start is called before the first frame update
         private Bowl bowl;
         private float startingTime;
+        bool isLoading = false;
         private void Awake()
         {
             if (Instance == null)
@@ -34,6 +35,7 @@ namespace Kingyo
         }
         void Start()
         {
+            isLoading = false;
             bowl = GameObject.Find("bowl").GetComponent<Bowl>();
             //level will equal to current scene number
             startLevel(GameManager.Instance.currentLevel);
@@ -42,22 +44,25 @@ namespace Kingyo
         // Update is called once per frame
         void Update()
         {
-            if (bowl != null)
+            if (!isLoading)
             {
-                UpdateScore(bowl.GetComponent<Bowl>().GetScore());
-            }
-            else
-            {
-                Debug.Log("bool not found");//TODO: Continue Finding it?
-            }
+                if (bowl != null)
+                {
+                    UpdateScore(bowl.GetScore());
+                }
+                else
+                {
+                    Debug.Log("bool not found");//TODO: Continue Finding it?
+                }
 
-            //count the time and shown in the time text
-            float elapsedTime = Time.time - startingTime;
-            int remainingTime = Mathf.RoundToInt(startingTime - elapsedTime);
-            timeText.text = "Time: " + remainingTime;
-            if (remainingTime <= 0)
-            {//if time is up, show up a message
-                //SceneManager.LoadScene(0);
+                //count the time and shown in the time text
+                float elapsedTime = Time.time - startingTime;
+                int remainingTime = Mathf.RoundToInt(startingTime - elapsedTime);
+                timeText.text = "Time: " + remainingTime;
+                if (remainingTime <= 0)
+                {//if time is up, show up a message
+                 //SceneManager.LoadScene(0);
+                }
             }
         }
 
@@ -66,6 +71,7 @@ namespace Kingyo
             scoreText.text = "Score: " + score;
             if (score >= ((GameManager.Instance.currentLevel == 0) ? 10 : GameManager.Instance.levelGoals[GameManager.Instance.currentLevel]))
             {
+                isLoading = true;
                 GameManager.Instance.OnLoadNextLevel?.Invoke();
             }
         }

@@ -20,8 +20,6 @@ namespace Kingyo
         internal GameObject bowl;
         [SerializeField]
         internal GameObject dplayer;
-        [SerializeField]
-        PoiGrabbableProxy[] grabbablePois;
         //public PoiGrabbableProxy currentGrabbingPoi { get; private set; }
         public PoiGrabbableProxy currentLeftGrabbing { get; private set; }
         public PoiGrabbableProxy currentRightGrabbing { get; private set; }
@@ -62,8 +60,8 @@ namespace Kingyo
         //public bool hasBowlOnHand { get; private set; } = false;
         //public bool rightHandOnUse { get; private set; } = false;
         //public bool leftHandOnUse{ get; private set; } = false;
-        public bool PoiOnLeft { get; private set; } = false;
-        public bool PoiOnRight { get; private set; } = false;
+        public bool PoiOnLeft { get => leftPoi.gameObject.activeSelf; }
+        public bool PoiOnRight { get => rightPoi.gameObject.activeSelf; }
         private void Awake()
         {
             if (Instance == null)
@@ -89,7 +87,14 @@ namespace Kingyo
                 {
                     // Load the menu scene if this is the last level
                     Time.timeScale = 0f;
-                    SceneManager.UnloadSceneAsync(currentLevel).completed += (AsyncOperation _) => { /*SceneManager.LoadSceneAsync(0);*/ Time.timeScale = 1f; currentLevel = 0; };
+                    SceneManager.UnloadSceneAsync(currentLevel).completed += (AsyncOperation _) =>
+                    {
+                        /*SceneManager.LoadSceneAsync(0);*/
+                        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(0));
+                        Time.timeScale = 1f;
+                        currentLevel = 0;
+                        MenuManager.Instance.menuCanvas.SetActive(true);
+                    };
                 }
                 else
                 {
@@ -97,13 +102,15 @@ namespace Kingyo
                     Time.timeScale = 0f;
                     SceneManager.UnloadSceneAsync(currentLevel).completed += (AsyncOperation _) =>
                     {
-                        Time.timeScale = 1f;
-                        SceneManager.LoadSceneAsync(++currentLevel, LoadSceneMode.Additive);
+                        SceneManager.LoadSceneAsync(currentLevel+1, LoadSceneMode.Additive).completed += (AsyncOperation _) =>
+                        {
+                            ++currentLevel;
+                            leftPoi.gameObject.SetActive(false);
+                            rightPoi.gameObject.SetActive(false);
+                            Time.timeScale = 1f;
+                            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(currentLevel));
+                        };
                     };
-                    leftPoi.net.threshold = levelSurfaceThreshold[currentLevel];
-                    rightPoi.net.threshold = levelSurfaceThreshold[currentLevel];
-                    leftPoi.gameObject.SetActive(false);
-                    rightPoi.gameObject.SetActive(false);
                 }
             };
         }
@@ -116,7 +123,6 @@ namespace Kingyo
                 currentLeftGrabbing = p;
                 leftPoi.proxy = p;
                 leftPoi.gameObject.SetActive(true);
-                PoiOnLeft = true;
                 leftPoi.OnPoiGetGrabbed?.Invoke();
             }
             else
@@ -124,7 +130,6 @@ namespace Kingyo
                 currentRightGrabbing = p;
                 rightPoi.proxy = p;
                 rightPoi.gameObject.SetActive(true);
-                PoiOnRight = true;
                 rightPoi.OnPoiGetGrabbed?.Invoke();
             }
         }
@@ -135,7 +140,6 @@ namespace Kingyo
                 currentRightGrabbing = null;
                 rightPoi.gameObject.SetActive(false);
                 rightPoi.proxy = null;
-                PoiOnRight = false;
                 rightPoi.OnPoiGetReleased?.Invoke();
             }
             if (currentLeftGrabbing == p)
@@ -143,7 +147,6 @@ namespace Kingyo
                 currentLeftGrabbing = null;
                 leftPoi.gameObject.SetActive(false);
                 leftPoi.proxy = null;
-                PoiOnLeft = false;
                 leftPoi.OnPoiGetReleased?.Invoke();
             }
         }
@@ -175,7 +178,8 @@ namespace Kingyo
             {
                 // Use left hand's joystick to adjust the rotation of the poi
                 Vector2 joystick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch);
-                if (joystick.x != 0) {
+                if (joystick.x != 0)
+                {
                     float rotationSpeed = 10f;
                     float rotationAmount = joystick.x * rotationSpeed * Time.deltaTime;
 
@@ -193,7 +197,8 @@ namespace Kingyo
             {
                 // Use left hand's joystick to adjust the rotation of the poi
                 Vector2 joystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick, OVRInput.Controller.RTouch);
-                if (joystick.x != 0) {
+                if (joystick.x != 0)
+                {
                     Debug.Log(joystick);
                     float rotationSpeed = 10f;
                     float rotationAmount = joystick.x * rotationSpeed * Time.deltaTime;
