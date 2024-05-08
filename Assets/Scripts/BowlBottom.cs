@@ -9,7 +9,7 @@ namespace Kingyo
         [SerializeField]
         Transform pivot;
 
-        List<Fish> snapped;
+        List<Fish> snapped = new List<Fish>();
         void FixedUpdate()
         {
             //if (Vector3.Dot(transform.up, Vector3.up) < 0)

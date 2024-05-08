@@ -760,9 +760,23 @@ MonoBehaviour:
   rightPoi: {fileID: 1960743167}
   bowl: {fileID: 0}
   dplayer: {fileID: 0}
-  grabbablePois: []
   OnLoadNextLevel:
     _PersistentCalls: []
+  levelTimeLimits:
+    keys: 010000000200000003000000
+    values:
+    - 200
+    - 150
+    - 100
+  levelGoals:
+    keys: 010000000200000003000000
+    values: 0a0000000f0000001e000000
+  levelSurfaceThreshold:
+    keys: 010000000200000003000000
+    values:
+    - 999
+    - 2
+    - 2
 --- !u!4 &159216434
 Transform:
   m_ObjectHideFlags: 0
@@ -7384,7 +7398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1973543552
 MonoBehaviour:
   m_ObjectHideFlags: 0
