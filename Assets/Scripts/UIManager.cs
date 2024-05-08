@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using AYellowpaper.SerializedCollections;
+using UnityEngine.Audio;
 
 namespace Kingyo
 {
@@ -18,10 +19,16 @@ namespace Kingyo
         private TextMeshProUGUI timeText;
         [SerializeField]
         private TextMeshProUGUI goalText;
+        [SerializeField]
+        private TextMeshProUGUI winningText;
+        [SerializeField]
+        private AudioClip audioClip;
+        [SerializeField]
+        private AudioSource audioSource;
         // Start is called before the first frame update
         private Bowl bowl;
         private float startingTime;
-        bool isLoading = false;
+        bool isWon = false;
         private void Awake()
         {
             if (Instance == null)
@@ -35,7 +42,7 @@ namespace Kingyo
         }
         void Start()
         {
-            isLoading = false;
+            isWon = false;
             bowl = GameObject.Find("bowl").GetComponent<Bowl>();
             //level will equal to current scene number
             startLevel(GameManager.Instance.currentLevel);
@@ -44,7 +51,7 @@ namespace Kingyo
         // Update is called once per frame
         void Update()
         {
-            if (!isLoading)
+            if (!isWon)
             {
                 if (bowl != null)
                 {
@@ -64,6 +71,13 @@ namespace Kingyo
                  //SceneManager.LoadScene(0);
                 }
             }
+            else
+            {
+                if (OVRInput.GetDown(OVRInput.Button.One))
+                {
+                    GameManager.Instance.OnLoadNextLevel?.Invoke();
+                }
+            }
         }
 
         void UpdateScore(int score)
@@ -71,8 +85,9 @@ namespace Kingyo
             scoreText.text = "Score: " + score;
             if (score >= ((GameManager.Instance.currentLevel == 0) ? 10 : GameManager.Instance.levelGoals[GameManager.Instance.currentLevel]))
             {
-                isLoading = true;
-                GameManager.Instance.OnLoadNextLevel?.Invoke();
+                audioSource.PlayOneShot(audioClip, 2f);
+                isWon = true;
+                winningText.gameObject.SetActive(true);
             }
         }
 

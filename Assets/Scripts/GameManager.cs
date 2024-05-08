@@ -1,4 +1,4 @@
-//using AYellowpaper.SerializedCollections;
+using AYellowpaper.SerializedCollections;
 using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
 using System.Collections;
@@ -27,9 +27,9 @@ namespace Kingyo
         public UltEvent OnLoadNextLevel = new UltEvent();
 
 
-        //[SerializedDictionary("level", "time")]
-        //public SerializableDictionary<int, float> levelTimeLimits = new SerializableDictionary<int, float>()
-        public Dictionary<int, float> levelTimeLimits = new Dictionary<int, float>()
+        [SerializedDictionary("level", "time")]
+        public SerializableDictionary<int, float> levelTimeLimits = new SerializableDictionary<int, float>()
+        //public Dictionary<int, float> levelTimeLimits = new Dictionary<int, float>()
         {
             { 1, 200f }, // Level 1 has a time limit of 200 seconds
             { 2, 150f }, // Level 2 has a time limit of 150 seconds
@@ -37,16 +37,17 @@ namespace Kingyo
             // Add more levels and their time limits as needed
         };
 
-        //[SerializedDictionary("level", "goal")]
-        //public SerializableDictionary<int, int> levelGoals = new SerializableDictionary<int, int>()
-        public Dictionary<int, int> levelGoals = new Dictionary<int, int>()
+        [SerializedDictionary("level", "goal")]
+        public SerializableDictionary<int, int> levelGoals = new SerializableDictionary<int, int>()
+        //public Dictionary<int, int> levelGoals = new Dictionary<int, int>()
         {
-            { 1, 10 }, // Level 1 has a goal of 100 points
-            { 2, 20 }, // Level 2 has a goal of 200 points
+            { 1, 3 }, // Level 1 has a goal of 100 points
+            { 2, 3 }, // Level 2 has a goal of 200 points
             { 3, 30 } // Level 3 has a goal of 300 points
             // Add more levels and their goals as needed
         };
-        public Dictionary<int, float> levelSurfaceThreshold = new Dictionary<int, float>()
+        [SerializedDictionary("level", "goal")]
+        public SerializableDictionary<int, float> levelSurfaceThreshold = new SerializableDictionary<int, float>()
         {
             { 1, 999f }, // Level 1 has a goal of 100 points
             { 2, 2f }, // Level 2 has a goal of 200 points
@@ -90,6 +91,10 @@ namespace Kingyo
                     SceneManager.UnloadSceneAsync(currentLevel).completed += (AsyncOperation _) =>
                     {
                         /*SceneManager.LoadSceneAsync(0);*/
+                        leftPoi.ClearSnapped();
+                        rightPoi.ClearSnapped();
+                        leftPoi.gameObject.SetActive(false);
+                        rightPoi.gameObject.SetActive(false);
                         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(0));
                         Time.timeScale = 1f;
                         currentLevel = 0;
@@ -104,6 +109,8 @@ namespace Kingyo
                     {
                         SceneManager.LoadSceneAsync(currentLevel+1, LoadSceneMode.Additive).completed += (AsyncOperation _) =>
                         {
+                            leftPoi.ClearSnapped();
+                            rightPoi.ClearSnapped();
                             ++currentLevel;
                             leftPoi.gameObject.SetActive(false);
                             rightPoi.gameObject.SetActive(false);

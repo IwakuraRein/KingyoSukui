@@ -127,23 +127,27 @@ namespace Kingyo
                 }
             };
         }
+        public void ClearSnapped()
+        {
+            Fish[] l = new Fish[snapped.Count];
+            int i = 0;
+            foreach (var fish in snapped.Keys)
+            {
+                //fish.rb.constraints = RigidbodyConstraints.None;
+                //fish.rb.useGravity = true;
+                //fish.rb.isKinematic = false;
+                l[i++] = fish;
+            }
+            foreach (var f in l)
+            {
+                OnFishExitPoi?.Invoke(this, f);
+            }
+        }
         private void FixedUpdate()
         {
             if (Vector3.Dot(transform.up, Vector3.up) < 0)
             {
-                Fish[] l = new Fish[snapped.Count];
-                int i = 0;
-                foreach (var fish in snapped.Keys)
-                {
-                    //fish.rb.constraints = RigidbodyConstraints.None;
-                    //fish.rb.useGravity = true;
-                    //fish.rb.isKinematic = false;
-                    l[i++] = fish;
-                }
-                foreach (var f in l)
-                {
-                    OnFishExitPoi?.Invoke(this, f);
-                }
+                ClearSnapped();
             }
             //else
                 //foreach (var fish in snapped.Keys)
